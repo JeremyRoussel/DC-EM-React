@@ -6,7 +6,7 @@ import '../style/sidebar.css'
 
 const BaseLayout = (props) => {
     
-    let auth = true 
+    let auth = true
     let visibility = auth ? 'visible' : 'hidden'
   return (
     <>
