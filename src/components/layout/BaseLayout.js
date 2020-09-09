@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import {Col, Row, Container} from 'react-bootstrap'
+import '../style/sidebar.css'
 
 const BaseLayout = (props) => {
   return (
@@ -9,8 +10,8 @@ const BaseLayout = (props) => {
     
         <Header />
     <Container className="m-0">   
-        <Row>
-            <Col className="col-1">
+        <Row style={ { height: 100 } }>
+            <Col className="col-2 bg-warning sidebar">
                 <Sidebar />
             </Col>
             <Col>

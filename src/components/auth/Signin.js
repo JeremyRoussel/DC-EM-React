@@ -25,7 +25,7 @@ class Signin extends React.Component {
 
         return (
 
-            <form onSubmit={handleSubmit(this.onSubmit)}>
+            <form onSubmit={handleSubmit(this.onSubmit)} className="m-5">
 
                 <fieldset>
                     <label>Email</label>
