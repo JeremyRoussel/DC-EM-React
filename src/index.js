@@ -16,9 +16,10 @@ import Compose from './components/Compose'
 import Drafts from './components/Drafts'
 import Subscribers from './components/Subscribers'
 import Sentmail from './components/Sentmail'
-
+import BaseLayout from './components/layout/BaseLayout'
 
 import reducers from './reducers/index';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 let store = createStore(reducers, {auth: {authenticated: localStorage.getItem('token')}},
   compose(applyMiddleware(thunk),
@@ -42,6 +43,10 @@ ReactDOM.render(
 
                     {/* UserHome */}
                     <Route path='/feature' component={Feature}/>
+                    <Route path='/compose' component={Compose}/>
+                    <Route path='/drafts' component={Drafts}/>
+                    <Route path='/subscribers' component={Subscribers}/>
+                    <Route path='/sentmail' component={Sentmail}/>
               </Switch>
             </BaseLayout>
         </BrowserRouter>
