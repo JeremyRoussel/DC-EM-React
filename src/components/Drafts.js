@@ -9,4 +9,4 @@ const Drafts = () => {
   )
 }
 
-export default Drafts
+export default requireAuth(Drafts)

@@ -9,4 +9,4 @@ const Subscribers = () => {
   )
 }
 
-export default Subscribers
+export default requireAuth(Subscribers)

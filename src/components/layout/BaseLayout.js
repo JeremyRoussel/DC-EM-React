@@ -3,10 +3,12 @@ import Header from './Header'
 import Sidebar from './Sidebar'
 import {Col, Row, Container} from 'react-bootstrap'
 import '../style/sidebar.css'
+import {useSelector} from 'react-redux'
 
 const BaseLayout = (props) => {
     
-    let auth = true
+
+    let auth = useSelector(state => state.auth.authenticated)
     let visibility = auth ? 'visible' : 'hidden'
   return (
     <>

@@ -13,7 +13,7 @@ class Signout extends React.Component {
 
         setTimeout(() => {
           this.props.history.push('/')
-        }, 2000
+        }, 1000
         )
     }
 

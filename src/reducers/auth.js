@@ -33,8 +33,15 @@ let auth = (state = init_state, action) => {
                 user: action.payload.userID
             }
 
-            default:
-            return state
+        case "LOGOUT_USER":
+            return {
+                ...state,
+                authenticated: "",
+                userID: ""
+            }
+
+        default:
+        return state
             
     }
 }
