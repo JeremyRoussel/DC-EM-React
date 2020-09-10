@@ -13,7 +13,7 @@ import Signout from './components/auth/Signout';
 import Signup from './components/auth/Signup';
 import About from './components/About';
 
-
+import Dashboard from './components/Dashboard'
 import Compose from './components/Compose'
 import Drafts from './components/Drafts'
 import Subscribers from './components/Subscribers'
@@ -45,6 +45,7 @@ ReactDOM.render(
                     <Route path='/about' component={About}/>
 
                     {/* UserHome */}
+                    <Route path='/dashboard' component={Dashboard}/>
                     <Route path='/feature' component={Feature}/>
                     <Route path='/compose' component={Compose}/>
                     <Route path='/drafts' component={Drafts}/>
