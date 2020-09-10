@@ -11,6 +11,8 @@ import Feature from './components/Feature';
 import Signin from './components/auth/Signin';
 import Signout from './components/auth/Signout';
 import Signup from './components/auth/Signup';
+import About from './components/About';
+
 
 import Compose from './components/Compose'
 import Drafts from './components/Drafts'
@@ -40,6 +42,7 @@ ReactDOM.render(
                     {/* Other Un-Auth Routes */}
                     <Route path='/signout' component={Signout}/>
                     {/* AboutUs */}
+                    <Route path='/about' component={About}/>
 
                     {/* UserHome */}
                     <Route path='/feature' component={Feature}/>
