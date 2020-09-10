@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card, Button, Col, Row, Container} from 'react-bootstrap'
 import guy from './images/no.png'
+import woody from './images/woodyheadshot.jpg'
 
 const About = () => {
   return (
@@ -21,12 +22,13 @@ const About = () => {
         
 
             <Card style={{ width: '15rem' }} className="m-2">
-                <Card.Img variant="top" src={guy} />
+                <Card.Img variant="top" src={woody} />
                 <Card.Body>
                     <Card.Title>Woody Connell</Card.Title>
                     <Card.Text>
                     Role: Back-end Development, API handling
                     </Card.Text>
+                    {/* secondary link: "https://www.linkedin.com/in/woody-connell/" */}
                     <Button variant="primary" href="https://github.com/woody-connell/" target="_blank">Github</Button>
                 </Card.Body>
             </Card>
