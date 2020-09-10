@@ -5,7 +5,8 @@ import {reduxForm, Field} from 'redux-form' //reduxForm is our higher order comp
 
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-import * as actions from '../../actions'
+
+import * as actions from '../../actions/auth/authDisptaches'
 
 class Signup extends React.Component {
 
