@@ -4,6 +4,7 @@ import {createStore, compose, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 
+
 import thunk from 'redux-thunk'
 
 import Welcome from './components/Welcome';
