@@ -3,7 +3,8 @@ import * as authTypes from '../actions/auth/authTypes'
 
 const init_state = {
     authenticated: '',
-    errorMessage: ''
+    errorMessage: '',
+    user: ''
 }
 
 
@@ -14,7 +15,9 @@ let auth = (state = init_state, action) => {
         case authTypes.AUTH_USER:
             return {
                 ...state,
-                authenticated: action.payload
+                authenticated: action.payload.token,
+                errorMessage: '',
+                user: action.payload.userID
             }
 
         case authTypes.AUTH_ERROR:
@@ -25,7 +28,9 @@ let auth = (state = init_state, action) => {
         case authTypes.AUTH_LOGOUT:
             return {
                 ...state,
-                authenticated: action.payload
+                authenticated: action.payload.token,
+                errorMessage: '',
+                user: action.payload.userID
             }
 
             default:
