@@ -1,4 +1,5 @@
 import React from 'react'
+import requireAuth from '../requireAuth'
 
 const Compose = () => {
   return (
@@ -8,4 +9,4 @@ const Compose = () => {
   )
 }
 
-export default Compose
+export default requireAuth(Compose)
