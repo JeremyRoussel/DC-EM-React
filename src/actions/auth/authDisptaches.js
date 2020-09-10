@@ -26,11 +26,12 @@ export const signup = (formProps, callback) => {
             let response = await axios.post("http://localhost:3001/signup", formProps)
 
             let token = response.data.token
+            let userID = response.data.userID
             console.log(response)
             //dispatch to reducer, the action with reponse
 
             // {type: "AUTH_USER", payload: token}
-            dispatch(authActions.userLoginSuccess(token))
+            dispatch(authActions.userLoginSuccess(token, userID))
 
             localStorage.setItem('token', token)
 
@@ -54,8 +55,11 @@ export const signin = (formProps, callback) => {
             let response = await axios.post("http://localhost:3001/signin", formProps)
 
             let token = response.data.token
+            let userID = response.data.userID
 
-            dispatch(authActions.userLoginSuccess(token))
+            console.log(response)
+
+            dispatch(authActions.userLoginSuccess(token, userID))
 
             localStorage.setItem('token', token)
             callback()
