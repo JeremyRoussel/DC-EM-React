@@ -23,9 +23,12 @@ import BaseLayout from './components/layout/BaseLayout'
 import reducers from './reducers/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-let store = createStore(reducers, {auth: {authenticated: localStorage.getItem('token')}},
+let store = createStore(reducers,
   compose(applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+// let store = createStore(reducers, {auth: {authenticated: localStorage.getItem('token')}},
+//   compose(applyMiddleware(thunk),
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 ReactDOM.render(
   <Provider store={store}>
