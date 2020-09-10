@@ -13,9 +13,9 @@ const About = () => {
                 <Card.Body>
                     <Card.Title>Jeremy Roussel</Card.Title>
                     <Card.Text>
-                    Role: Backend Development, Architecture
+                    Role: Back-end Development, Architecture
                     </Card.Text>
-                    <Button variant="primary">Github</Button>
+                    <Button variant="primary" href="https://github.com/JeremyRoussel/" target="_blank">Github</Button>
                 </Card.Body>
             </Card>
         
@@ -25,9 +25,9 @@ const About = () => {
                 <Card.Body>
                     <Card.Title>Woody Connell</Card.Title>
                     <Card.Text>
-                    Role: Backend Development, API handling
+                    Role: Back-end Development, API handling
                     </Card.Text>
-                    <Button variant="primary">Github</Button>
+                    <Button variant="primary" href="https://github.com/woody-connell/" target="_blank">Github</Button>
                 </Card.Body>
             </Card>
         </Row>
@@ -38,9 +38,9 @@ const About = () => {
                 <Card.Body>
                     <Card.Title>Dan Gelok</Card.Title>
                     <Card.Text>
-                    Role: Frontend Development, UX
+                    Role: Front-end Development, UX
                     </Card.Text>
-                    <Button variant="primary">Github</Button>
+                    <Button variant="primary" href="https://github.com/dgelok/" target="_blank">Github</Button>
                 </Card.Body>
             </Card>
             <Card style={{ width: '15rem' }} className="m-1">
@@ -48,9 +48,9 @@ const About = () => {
                 <Card.Body>
                     <Card.Title>Chris David</Card.Title>
                     <Card.Text>
-                    Role: Frontend Development, animations
+                    Role: Front-end Development, animations
                     </Card.Text>
-                    <Button variant="primary">Github</Button>
+                    <Button variant="primary" href="https://github.com/CM-David/" target="_blank">Github</Button>
                 </Card.Body>
             </Card>
         </Row>
