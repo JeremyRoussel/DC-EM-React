@@ -1,25 +1,36 @@
+import * as authTypes from '../actions/auth/authTypes'
 
 
 const init_state = {
     authenticated: '',
-    userID: '',
-    errorMessage: ''
+    errorMessage: '',
+    user: ''
 }
+
 
 let auth = (state = init_state, action) => {
 
     switch (action.type){
         
-        case "AUTH_USER":
+        case authTypes.AUTH_USER:
             return {
                 ...state,
-                authenticated: action.payload
+                authenticated: action.payload.token,
+                errorMessage: '',
+                user: action.payload.userID
             }
 
-        case "AUTH_ERROR":
+        case authTypes.AUTH_ERROR:
             return {
                 ...state,
                 errorMessage: action.payload
+            }
+        case authTypes.AUTH_LOGOUT:
+            return {
+                ...state,
+                authenticated: action.payload.token,
+                errorMessage: '',
+                user: action.payload.userID
             }
 
         case "LOGOUT_USER":
