@@ -15,7 +15,7 @@ class Signin extends React.Component {
         this.props.signin(formProps, ()=>{
 
             console.log('Sign In Success')
-            this.props.history.push('/feature')
+            this.props.history.push('/dashboard')
         })
     }
 
