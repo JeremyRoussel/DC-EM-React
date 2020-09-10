@@ -2,6 +2,7 @@
 
 const init_state = {
     authenticated: '',
+    userID: '',
     errorMessage: ''
 }
 
@@ -21,8 +22,15 @@ let auth = (state = init_state, action) => {
                 errorMessage: action.payload
             }
 
-            default:
-            return state
+        case "LOGOUT_USER":
+            return {
+                ...state,
+                authenticated: "",
+                userID: ""
+            }
+
+        default:
+        return state
             
     }
 }

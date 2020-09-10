@@ -53,7 +53,7 @@ export const signin = (formProps, callback) => {
 
 export const signout = () => {
 
-    localStorage.removeItem('token');
+    localStorage.removeItem('authenticated');
 
     return {
         type: "LOGOUT_USER",
