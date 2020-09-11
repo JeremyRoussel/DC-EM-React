@@ -4,10 +4,11 @@ import Sidebar from './Sidebar'
 import Burger from './Burger'
 import {Col, Row, Container} from 'react-bootstrap'
 import '../style/sidebar.css'
+
 import {useOnClickOutside} from '../../hooks'
 import {theme} from '../style/theme'
 import { ThemeProvider } from 'styled-components';
-
+import {useSelector} from 'react-redux'
 
 
 const BaseLayout = (props) => {
@@ -17,7 +18,8 @@ const BaseLayout = (props) => {
   
     useOnClickOutside(node, () => setOpen(false));
     
-    let auth = true
+
+    let auth = useSelector(state => state.auth.authenticated)
     let visibility = auth ? 'visible' : 'hidden'
   return (
     

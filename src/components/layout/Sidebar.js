@@ -10,6 +10,7 @@ const Sidebar = ({ open, ...props }) => {
     const tabIndex = isHidden ? 0 : -1;
 return (
 
+
     <StyledMenu open={open} aria-hidden={!isHidden} {...props}>
     <Link to="/">My Dashboard</Link><br /><br />
         <Link to="/compose">Compose</Link><br /><br />
@@ -17,6 +18,7 @@ return (
         <Link to="/drafts">Drafts</Link><br /><br />
         <Link to="/sentmail">Sent Mail</Link><br /><br />
       </StyledMenu>
+
 )
 }
 

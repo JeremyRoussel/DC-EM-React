@@ -9,4 +9,4 @@ const Sentmail = () => {
   )
 }
 
-export default Sentmail
+export default requireAuth(Sentmail)
