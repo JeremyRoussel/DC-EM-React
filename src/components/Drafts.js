@@ -8,23 +8,57 @@ import {useSelector} from 'react-redux'
 
 const Drafts = () => {
 
-  let myDrafts = useSelector(state => state.auth.drafts)
-  console.log(myDrafts)
-  let [editorData, updateEditorData] = useState("Hello from CKeditor!")
-  let [show, updateShow] = useState(false)
-  let visibility = show ? "visible" : "hidden"
-
+  // let myDrafts = useSelector(state => state.drafts)
   let handleSubmit = () =>{
-      console.log(editorData)
+    console.log(editorData)
   }
 
   let onEditorChange = (evt) =>{
     updateEditorData(evt.editor.getData())
   }
   
-  let handleShowMe = () =>{
+
+  let handleShowMe = (text) =>{
     updateShow(true)
+    updateEditorData(text)
   }
+  let myDrafts = [
+    {
+      title: "first email",
+      body: "<p>yabba dabba doo</p>"
+    },
+    {
+      title: "SECOND email",
+      body: "<h1>BIG TEXT HERE</h1><p>yabba dabba doo</p><div>whooo</div>"
+    },
+    {
+      title: "ThIRd EmAiL hErE",
+      body: "<p>yabba dabba doo</p>"
+    },
+  ]
+  let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
+  let [show, updateShow] = useState(false)
+  console.log(myDrafts)
+  
+  let draftList;
+  if (myDrafts.length === 0) {
+    draftList = "No Drafts to report!"
+  } 
+  else {
+      draftList = myDrafts.map((r, index) =>{
+          return <ListGroup.Item key={index} onClick={handleShowMe(r.body)} href={`#link${index}`}>
+            {r.title}
+          </ListGroup.Item>
+      })
+  }
+
+
+
+  
+  
+  let visibility = show ? "visible" : "hidden"
+
+  
 
   return (
     <>
@@ -32,7 +66,8 @@ const Drafts = () => {
         <Row>
           <Col>
             <ListGroup>
-              <ListGroup.Item action onClick={handleShowMe} href="#link1">
+              {draftList}
+              {/* <ListGroup.Item action onClick={handleShowMe} href="#link1">
                 First email
               </ListGroup.Item>
               <ListGroup.Item action onClick={handleShowMe} href="#link2">
@@ -43,7 +78,7 @@ const Drafts = () => {
               </ListGroup.Item>
               <ListGroup.Item action onClick={handleShowMe} href="#link4">
                 Fourth email
-              </ListGroup.Item>
+              </ListGroup.Item> */}
 
             </ListGroup>
           </Col>
