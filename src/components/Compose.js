@@ -21,7 +21,7 @@ const Compose = () => {
           data={editorData} 
           onChange={onEditorChange}
       />
-      <input type="button" onClick={handleSubmit}/>
+      <button type="button" onClick={handleSubmit}>Submit</button>
     </div>
   )
 }
