@@ -1,6 +1,5 @@
 import React from 'react'
-import {Card, Button, Col, Row, Container} from 'react-bootstrap'
-import guy from './images/no.png'
+import {Card, Col, Row, Container} from 'react-bootstrap'
 import woody from './images/woodyheadshot.jpg'
 import jeremy from './images/jeremy.jpg'
 import chris from './images/chris.jpg'

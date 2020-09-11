@@ -20,8 +20,8 @@ export const signup = (formProps, callback) => {
         
         try {
             //api call
-            let url = AUTH_POST_ROUTE + 'signup'
-            console.log(url)
+            // let url = AUTH_POST_ROUTE + 'signup'
+            // console.log(url)
 
             let response = await axios.post("http://localhost:3001/signup", formProps)
 
@@ -50,7 +50,7 @@ export const signin = (formProps, callback) => {
     return async (dispatch) => {
 
         try {
-            let url = AUTH_POST_ROUTE + 'signin'
+            // let url = AUTH_POST_ROUTE + 'signin'
 
             let response = await axios.post("http://localhost:3001/signin", formProps)
 
