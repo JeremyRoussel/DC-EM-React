@@ -7,6 +7,10 @@ import {useSelector} from 'react-redux'
 
 
 const Drafts = () => {
+  
+  
+  let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
+  let [show, updateShow] = useState(false)
 
   // let myDrafts = useSelector(state => state.drafts)
   let handleSubmit = () =>{
@@ -18,8 +22,10 @@ const Drafts = () => {
   }
   
 
-  let handleShowMe = () =>{
+  let handleShowMe = (text) =>{
     updateShow(true)
+    console.log(text)
+    updateEditorData(text)
 
   }
   let myDrafts = [
@@ -33,11 +39,10 @@ const Drafts = () => {
     },
     {
       title: "ThIRd EmAiL hErE",
-      body: "<p>yabba dabba doo</p>"
+      body: "<p>THIS IS MY THIRD email with stuff and things</p>"
     },
   ]
-  let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
-  let [show, updateShow] = useState(false)
+  
   console.log(myDrafts)
   
   let draftList;
@@ -46,7 +51,7 @@ const Drafts = () => {
   } 
   else {
       draftList = myDrafts.map((r, index) =>{
-          return <ListGroup.Item key={index} onClick={handleShowMe()} href={`#link${index}`}>
+          return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
             {r.title}
           </ListGroup.Item>
       })
