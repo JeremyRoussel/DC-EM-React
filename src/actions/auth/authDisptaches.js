@@ -2,12 +2,15 @@ import axios from 'axios'
 import authActions from './authActions'
 import * as authTypes from './authTypes'
 
+import contactActions from '../contacts/contactActions'
+
+
 // imported into ./components/auth/ [Signin, Signup, Signout]
 
 // import our post route
-require('dotenv').config()
+// require('dotenv').config()
 
-const AUTH_POST_ROUTE = process.env.AUTH_POST_ROUTE
+// const AUTH_POST_ROUTE = process.env.AUTH_POST_ROUTE
 
 export const signup = (formProps, callback) => {
 
@@ -20,14 +23,16 @@ export const signup = (formProps, callback) => {
         
         try {
             //api call
-            let url = AUTH_POST_ROUTE + 'signup'
-            console.log(url)
+            // let url = AUTH_POST_ROUTE + 'signup'
+            // console.log(url)
 
             let response = await axios.post("http://localhost:3001/signup", formProps)
+            
+            console.log(response)
 
             let token = response.data.token
             let userID = response.data.userID
-            console.log(response)
+
             //dispatch to reducer, the action with reponse
 
             // {type: "AUTH_USER", payload: token}
@@ -50,18 +55,22 @@ export const signin = (formProps, callback) => {
     return async (dispatch) => {
 
         try {
-            let url = AUTH_POST_ROUTE + 'signin'
+            // let url = AUTH_POST_ROUTE + 'signin'
 
             let response = await axios.post("http://localhost:3001/signin", formProps)
+            
+            console.log(response)
 
             let token = response.data.token
             let userID = response.data.userID
-
-            console.log(response)
+            let contacts = response.data.contacts
 
             dispatch(authActions.userLoginSuccess(token, userID))
 
+            dispatch(contactActions.fetchContactsSuccess(contacts))
+
             localStorage.setItem('token', token)
+
             callback()
 
         } catch (error) {
