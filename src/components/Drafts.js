@@ -18,9 +18,9 @@ const Drafts = () => {
   }
   
 
-  let handleShowMe = (text) =>{
+  let handleShowMe = () =>{
     updateShow(true)
-    updateEditorData(text)
+
   }
   let myDrafts = [
     {
@@ -46,7 +46,7 @@ const Drafts = () => {
   } 
   else {
       draftList = myDrafts.map((r, index) =>{
-          return <ListGroup.Item key={index} onClick={handleShowMe(r.body)} href={`#link${index}`}>
+          return <ListGroup.Item key={index} onClick={handleShowMe()} href={`#link${index}`}>
             {r.title}
           </ListGroup.Item>
       })
