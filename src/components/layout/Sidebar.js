@@ -4,6 +4,7 @@ import { bool } from 'prop-types';
 import { StyledMenu } from '../style/Sidebar.styled';
 
 
+
 const Sidebar = ({ open, ...props }) => {
 
     const isHidden = open ? true : false;
