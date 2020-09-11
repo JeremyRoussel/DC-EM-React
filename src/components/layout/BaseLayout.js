@@ -1,11 +1,10 @@
 import React, { useState, useRef } from 'react'
-import Header from './Header'
 import Sidebar from './Sidebar'
+import Header from './Header'
 import Burger from './Burger'
 import {Col, Row, Container} from 'react-bootstrap'
 import '../style/sidebar.css'
-
-import {useOnClickOutside} from '../../hooks'
+import {useOnClickOutside} from './hooks'
 import {theme} from '../style/theme'
 import { ThemeProvider } from 'styled-components';
 import {useSelector} from 'react-redux'
@@ -28,9 +27,9 @@ const BaseLayout = (props) => {
         <Header />
         <ThemeProvider theme={theme}>
         
-    <Container className="m-0">
-        <Row style={ { height: 100 } }>
-            <Col style={{visibility:visibility}}>      
+    <Container className="m-0" style={{visibility:visibility}}>
+        <Row >
+            <Col >      
             <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
             <Sidebar open={open} setOpen={setOpen} id={menuId} />
             </Col>

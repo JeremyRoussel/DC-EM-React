@@ -16,7 +16,10 @@ const Burger = ({ open, setOpen, ...props }) => {
             <span />
             <span />
             <span />
+            
         </StyledBurger>
+        
+        
     );
 };
 

@@ -37,4 +37,4 @@ export const StyledBurger = styled.button`
     }
 `;
 
-export default StyledBurger
+
