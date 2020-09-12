@@ -2,21 +2,19 @@ import * as draftTypes from './draftTypes'
 
 class draftActions {
 
-    static getDrafts(userID) {
+    static getDrafts(drafts) {
         return {
             type: draftTypes.getDrafts, 
-            userID: userID
+            drafts: drafts
         }
     }
 
-    static updateDrafts(userID) {
+    static updateDrafts(drafts) {
         return {
             type: draftTypes.updateDrafts,
-            userID: userID
+            drafts: drafts
         }
     }
-
-
 }
 
 export default draftActions
