@@ -5,10 +5,12 @@ import {reducer as formReducer} from 'redux-form'
 import auth from './auth'
 import contacts from './contacts'
 import drafts from './drafts'
+import sent from './sent'
 
 export default combineReducers({
     auth: auth,
     form: formReducer,
     contacts: contacts,
-    drafts: drafts
+    drafts: drafts,
+    sent: sent
 })

@@ -4,6 +4,7 @@ import * as authTypes from './authTypes'
 
 import contactActions from '../contacts/contactActions'
 import draftsActions from '../drafts/draftActions'
+import sentActions from '../sent/sentActions'
 
 // imported into ./components/auth/ [Signin, Signup, Signout]
 
@@ -65,6 +66,7 @@ export const signin = (formProps, callback) => {
             let userID = response.data.userID
             let contacts = response.data.contacts
             let drafts = response.data.drafts
+            let sent = response.data.sent
 
             dispatch(authActions.userLoginSuccess(token, userID))
 
@@ -72,6 +74,8 @@ export const signin = (formProps, callback) => {
 
             dispatch(draftsActions.getDrafts(drafts))
 
+            dispatch(sentActions.getSent(sent))
+            
             localStorage.setItem('token', token)
 
             callback()
