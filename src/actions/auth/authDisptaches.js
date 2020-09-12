@@ -3,7 +3,7 @@ import authActions from './authActions'
 import * as authTypes from './authTypes'
 
 import contactActions from '../contacts/contactActions'
-
+import draftsActions from '../drafts/draftActions'
 
 // imported into ./components/auth/ [Signin, Signup, Signout]
 
@@ -64,10 +64,13 @@ export const signin = (formProps, callback) => {
             let token = response.data.token
             let userID = response.data.userID
             let contacts = response.data.contacts
+            let drafts = response.data.drafts
 
             dispatch(authActions.userLoginSuccess(token, userID))
 
             dispatch(contactActions.fetchContactsSuccess(contacts))
+
+            dispatch(draftsActions.getDrafts(drafts))
 
             localStorage.setItem('token', token)
 
