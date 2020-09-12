@@ -5,7 +5,7 @@ const init_state = []
 let drafts = (state = init_state, action) =>{
 
     switch (action.type){
-        case draftTypes.addContacts:
+        case draftTypes.getDrafts:
         // WHY IS STATE AN ARRAY INSTEAD OF AN OBJECT (AS IN PREVIOUS PROJECTS?)
             return [
                 ...state,
