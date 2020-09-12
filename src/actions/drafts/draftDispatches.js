@@ -1,37 +1,56 @@
 import axios from 'axios'
 import draftActions from './draftActions'
-import * as draftTypes from './draftTypes'
+// DON'T THINK I NEED THESE ********************
+// import * as draftTypes from './draftTypes'
 
-require('dotenv').config()
+export const getDrafts = async () =>{
+    try {
 
-const AUTH_POST_ROUTE = process.env.AUTH_POST_ROUTE
+        let token = localStorage.getItem('token')
 
-
-export const getDrafts = (formProps) =>{
-    
-    return async (dispatch) =>{
-        try {
-            // let url = AUTH_POST_ROUT + "drafts"
-            // Do I need to set up a route on the server for this? 
-            let response = await axios.post("http://localhost:3001/drafts", formProps);
-            console.log(response)
-            // What will the response look like?
-            // How to dispatch? Currently it needs a userID.
-            dispatch(draftActions.getDrafts())
-
-        }
-        catch (e) {
-            console.log("didn't work")
-            dispatch({
-                type: draftTypes.getDrafts,
-                payload: "Couldn't get drafts"
-            })
-        }
+        let response = await axios.get("http://localhost:30001/drafts", {headers: {'authentication': token}})
+        console.log(response);
+        let drafts = response.drafts;
+        dispatch(draftActions.getDrafts(drafts))
     }
-
+    catch (error) {
+        console.log("Couldn't get contacts")
+    }
 }
 
-export const updateDrafts = () =>{
+// ************************************************************************
+// THIS IS THE OLD STUFF WRITTEN PRE-CONTACT FILES ************************
 
 
-}
+// require('dotenv').config()
+
+// const AUTH_POST_ROUTE = process.env.AUTH_POST_ROUTE
+
+// export const getDrafts = (formProps) =>{
+    
+//     return async (dispatch) =>{
+//         try {
+//             // let url = AUTH_POST_ROUT + "drafts"
+//             // Do I need to set up a route on the server for this? 
+//             let response = await axios.post("http://localhost:3001/drafts", formProps);
+//             console.log(response)
+//             // What will the response look like?
+//             // How to dispatch? Currently it needs a userID.
+//             dispatch(draftActions.getDrafts())
+
+//         }
+//         catch (e) {
+//             console.log("didn't work")
+//             dispatch({
+//                 type: draftTypes.getDrafts,
+//                 payload: "Couldn't get drafts"
+//             })
+//         }
+//     }
+
+// }
+
+// export const updateDrafts = () =>{
+
+
+// }
