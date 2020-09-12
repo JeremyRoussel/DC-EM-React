@@ -12,7 +12,6 @@ const Drafts = () => {
   let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
   let [show, updateShow] = useState(false)
 
-  // let myDrafts = useSelector(state => state.drafts)
   let handleSubmit = () =>{
     console.log(editorData)
   }
@@ -28,20 +27,22 @@ const Drafts = () => {
     updateEditorData(text)
 
   }
-  let myDrafts = [
-    {
-      title: "first email",
-      body: "<p>yabba dabba doo</p>"
-    },
-    {
-      title: "SECOND email",
-      body: "<h1>BIG TEXT HERE</h1><p>yabba dabba doo</p><div>whooo</div>"
-    },
-    {
-      title: "ThIRd EmAiL hErE",
-      body: "<p>THIS IS MY THIRD email with stuff and things</p>"
-    },
-  ]
+    let myDrafts = useSelector(state => state.drafts[0])
+
+  // let myDrafts = [
+  //   {
+  //     title: "first email",
+  //     body: "<p>yabba dabba doo</p>"
+  //   },
+  //   {
+  //     title: "SECOND email",
+  //     body: "<h1>BIG TEXT HERE</h1><p>yabba dabba doo</p><div>whooo</div>"
+  //   },
+  //   {
+  //     title: "ThIRd EmAiL hErE",
+  //     body: "<p>THIS IS MY THIRD email with stuff and things</p>"
+  //   },
+  // ]
   
   console.log(myDrafts)
   
