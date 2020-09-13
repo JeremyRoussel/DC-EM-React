@@ -27,7 +27,8 @@ const Drafts = () => {
     updateEditorData(text)
 
   }
-    let myDrafts = useSelector(state => state.drafts[0])
+
+  let myDrafts = useSelector(state => state.drafts)
 
   // let myDrafts = [
   //   {
@@ -47,15 +48,15 @@ const Drafts = () => {
   console.log(myDrafts)
   
   let draftList;
-  if (myDrafts.length === 0) {
+  if (myDrafts[0].length === 0) {
     draftList = "No Drafts to report!"
   } 
   else {
-      draftList = myDrafts.map((r, index) =>{
-          return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
-            {r.title}
-          </ListGroup.Item>
-      })
+    draftList = myDrafts[0].map((r, index) =>{
+        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
+          {r.title}
+        </ListGroup.Item>
+    })
   }
 
 
