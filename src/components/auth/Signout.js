@@ -13,14 +13,13 @@ class Signout extends React.Component {
 
         setTimeout(() => {
           this.props.history.push('/')
-        }, 1000
+        }, 0
         )
     }
 
     render() {
         return (
             <div className="m-5">
-                Sorry to see you go
             </div>
         );
     }
