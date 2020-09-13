@@ -6,17 +6,19 @@ import contactActions from './contactActions'
 
 export const fetchContacts = async () => {
 
+    
+
     try {
     
         let token = localStorage.getItem('token')
 
-        let response = await axios.get("http://localhost:3001/contacts", {headers: {'authentication': token}})
+        let response = await axios.get("http://localhost:3001/contacts", {headers: {'authorization': token}})
         
-        console.log(response)
+        // console.log(response)
 
         let contacts = response.data
 
-        dispatch(contactActions.fetchContactsSuccess(contacts))
+        return contactActions.fetchContactsSuccess(contacts)
 
     } catch (error) {
         
