@@ -27,9 +27,9 @@ const BaseLayout = (props) => {
         <Header />
         <ThemeProvider theme={theme}>
         
-    <Container className="m-0" style={{visibility:visibility}}>
+    <Container className="m-0">
         <Row >
-            <Col >      
+            <Col style={{visibility:visibility}}>      
             <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
             <Sidebar open={open} setOpen={setOpen} id={menuId} />
             </Col>
