@@ -48,7 +48,7 @@ const Drafts = () => {
   console.log(myDrafts)
   
   let draftList;
-  if (myDrafts[0].length === 0) {
+  if (myDrafts.length === 0) {
     draftList = "No Drafts to report!"
   } 
   else {
