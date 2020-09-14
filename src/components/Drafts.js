@@ -52,7 +52,7 @@ const Drafts = () => {
     draftList = "No Drafts to report!"
   } 
   else {
-    draftList = myDrafts[0].map((r, index) =>{
+    draftList = myDrafts.map((r, index) =>{
         return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
           {r.title}
         </ListGroup.Item>

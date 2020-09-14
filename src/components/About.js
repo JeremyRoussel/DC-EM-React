@@ -18,8 +18,8 @@ const About = () => {
                     <Card.Text>
                     Role: Back-end Development, Architecture
                     </Card.Text>
-                    <a href="https://www.linkedin.com/in/jeremyroussel/" target="_blank"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;
-                    <a href="https://github.com/JeremyRoussel" target="_blank"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
+                    <a href="https://www.linkedin.com/in/jeremyroussel/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt=""/></a>&nbsp;&nbsp;
+                    <a href="https://github.com/JeremyRoussel" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white" alt=""/></a>
                 </Card.Body>
             </Card>
         
@@ -32,8 +32,8 @@ const About = () => {
                     Role: Back-end Development, API handling
                     </Card.Text>
                     
-                    <a href="https://www.linkedin.com/in/woody-connell/" target="_blank"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;
-                    <a href="https://github.com/woody-connell/" target="_blank"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
+                    <a href="https://www.linkedin.com/in/woody-connell/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt=""/></a>&nbsp;&nbsp;
+                    <a href="https://github.com/woody-connell/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white" alt=""/></a>
                 </Card.Body>
             </Card>
         </Row>
@@ -47,8 +47,8 @@ const About = () => {
                     Role: Front-end Development, UX
                     </Card.Text>
                     
-                    <a href="https://www.linkedin.com/in/dangelok/" target="_blank"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;
-                    <a href="https://github.com/dgelok/" target="_blank"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
+                    <a href="https://www.linkedin.com/in/dangelok/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt=""/></a>&nbsp;&nbsp;
+                    <a href="https://github.com/dgelok/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white" alt=""/></a>
                     
                 </Card.Body>
             </Card>
@@ -59,8 +59,8 @@ const About = () => {
                     <Card.Text>
                     Role: Front-end Development, animations
                     </Card.Text>
-                    <a href="https://www.linkedin.com/in/chris-m-david/" target="_blank"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;
-                    <a href="https://github.com/CM-David/" target="_blank"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white"/></a>
+                    <a href="https://www.linkedin.com/in/chris-m-david/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt=""/></a>&nbsp;&nbsp;
+                    <a href="https://github.com/CM-David/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white" alt=""/></a>
                     
                 </Card.Body>
             </Card>

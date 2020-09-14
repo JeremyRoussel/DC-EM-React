@@ -12,10 +12,13 @@ import {fetchContacts} from '../actions/contacts/contactDispatches'
 import { Table } from 'react-bootstrap';
 import ContactTableEntry from './ContactTableEntry';
 
+// Input Form
+import AddContact from './AddContact'
+
 const Subscribers = () => {
 
   const [contactEntries, setContactEntries] = useState([])
-  const contactList = useSelector(state => state.contacts)
+  const contactList = useSelector(state => state.contacts.list)
   const dispatch = useDispatch()
 
   // upon loading Subscribers, fetch contacts if empty and dispatch
@@ -80,6 +83,8 @@ const Subscribers = () => {
 
         </tbody>
       </Table>
+
+      <AddContact />
     </>
   )
 }
