@@ -13,7 +13,7 @@ let sent = (state = init_state, action) =>{
         case sentTypes.updateSent:
             return [
                 ...state,
-                ...action.sent[0]
+                ...action.sent
             ]
         default:
             return state

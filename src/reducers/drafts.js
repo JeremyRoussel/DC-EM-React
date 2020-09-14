@@ -9,13 +9,13 @@ let drafts = (state = init_state, action) =>{
         // WHY IS STATE AN ARRAY INSTEAD OF AN OBJECT (AS IN PREVIOUS PROJECTS?)
             return [
                 ...state,
-                action.drafts
+                ...action.drafts
             ]
         // NOT SURE THIS ONE IS CORRECT
         case draftTypes.updateDrafts:
             return [
                 ...state,
-                action.drafts[0]
+                ...action.drafts
             ]
         default: 
             return state

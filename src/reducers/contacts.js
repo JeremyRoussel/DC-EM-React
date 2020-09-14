@@ -1,7 +1,10 @@
 import * as contactTypes from '../actions/contacts/contactTypes'
 
 
-const init_state = []
+const init_state = {
+    list: [],
+    errorMessage: ''
+}
 
 let contacts = (state = init_state, action) => {
 
@@ -9,10 +12,20 @@ let contacts = (state = init_state, action) => {
     switch (action.type){
         
         case contactTypes.FETCH_CONTACTS_SUCCESS:
-            return [...state, ...action.contacts]
+   
+            return {...state,
+                list: [...action.contacts]
+            }
 
         case contactTypes.ADD_CONTACTS_SUCCESS:
-            return [...state, action.contacts[0] ]
+            return {...state, 
+                list: [...state.list, action.contacts]
+            }
+
+        case contactTypes.ADD_CONTACTS_ERROR:
+            return {...state,
+                errorMessage: action.payload
+            }
 
         default:
             return state
