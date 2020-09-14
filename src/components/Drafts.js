@@ -38,7 +38,7 @@ const Drafts = () => {
       updateDraftList("No Drafts to report!")
     } 
     else {
-      let newDraftList = myDrafts[0].map((r, index) =>{
+      let newDraftList = myDrafts.map((r, index) =>{
           return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
             {r.title}
           </ListGroup.Item>
