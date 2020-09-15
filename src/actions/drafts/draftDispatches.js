@@ -11,7 +11,8 @@ export const getDrafts = async () =>{
         let response = await axios.get("http://localhost:30001/drafts", {headers: {'authentication': token}})
         console.log(response);
         let drafts = response.drafts;
-        dispatch(draftActions.getDrafts(drafts))
+
+        return draftActions.getDrafts(drafts)
     }
     catch (error) {
         console.log("Couldn't get contacts")

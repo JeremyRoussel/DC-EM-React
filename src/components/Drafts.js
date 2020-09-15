@@ -1,16 +1,51 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import requireAuth from '../requireAuth'
 import {Tab, Row, Col, ListGroup} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
-import {useSelector} from 'react-redux'
-
+import {useSelector, useDispatch} from 'react-redux'
+import {getDrafts} from '../actions/drafts/draftDispatches'
 
 
 const Drafts = () => {
   
   
   let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
+  let [draftList, updateDraftList] = useState("No Drafts to report!")
   let [show, updateShow] = useState(false)
+  let myDrafts = useSelector(state => state.drafts)
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+
+    async function instantiateDrafts() {
+      if (myDrafts.length === 0){
+        try{
+
+          let draftsAction = await getDrafts()
+          dispatch(draftsAction)
+
+        } catch (error) {
+
+          console.log(`Couldn't fetch Drafts. Error: ${error}`)
+        }
+
+      }}
+
+    instantiateDrafts()
+
+
+    if (myDrafts.length === 0) {
+      updateDraftList("No Drafts to report!")
+    } 
+    else {
+      let newDraftList = myDrafts.map((r, index) =>{
+          return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
+            {r.title}
+          </ListGroup.Item>
+      })
+      updateDraftList(newDraftList)
+    }
+  }, [myDrafts])
 
   let handleSubmit = () =>{
     console.log(editorData)
@@ -28,8 +63,6 @@ const Drafts = () => {
 
   }
 
-  let myDrafts = useSelector(state => state.drafts)
-
   // let myDrafts = [
   //   {
   //     title: "first email",
@@ -45,19 +78,19 @@ const Drafts = () => {
   //   },
   // ]
   
-  console.log(myDrafts)
+  // console.log(myDrafts)
   
-  let draftList;
-  if (myDrafts.length === 0) {
-    draftList = "No Drafts to report!"
-  } 
-  else {
-    draftList = myDrafts.map((r, index) =>{
-        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
-          {r.title}
-        </ListGroup.Item>
-    })
-  }
+  // let draftList;
+  // if (myDrafts.length === 0) {
+  //   draftList = "No Drafts to report!"
+  // } 
+  // else {
+  //   draftList = myDrafts[0].map((r, index) =>{
+  //       return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
+  //         {r.title}
+  //       </ListGroup.Item>
+  //   })
+  // }
 
 
 

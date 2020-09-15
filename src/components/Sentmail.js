@@ -1,13 +1,53 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import requireAuth from '../requireAuth'
 import {Tab, Row, Col, ListGroup} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {getSent} from '../actions/sent/sentDispatches'
 
 
 const Sentmail = () =>{
+
+
   let [editorData, updateEditorData] = useState("")
+  let [sentList, updateSentList] = useState("No Sent Mail to display!")
   let [show, updateShow] = useState(false)
+  let mySentMail = useSelector(state => state.sent)
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+
+    async function instantiateSentList () {
+      if (sentList.length === 0) {
+        try {
+          let sentAction = await getSent();
+          dispatch(sentAction)
+
+        }
+        catch (err) {
+          console.log(`Error trying to fetch Sentmail: ${err}`)
+        }
+      }  
+    }
+
+    instantiateSentList();
+
+    if (mySentMail.length === 0) {
+      updateSentList("No Sent Mail to report!")
+    }  
+    else {
+      let newSentList = mySentMail.map((r, index) =>{
+        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
+          {r.title}
+          </ListGroup.Item>
+      });
+      updateSentList(newSentList)
+    }
+
+  }, [mySentMail])
+
+
+
 
   let handleSubmit = () =>{
     console.log(editorData)
@@ -24,20 +64,7 @@ const Sentmail = () =>{
     updateEditorData(text)
   }
 
-  let mySentMail = useSelector(state => state.sent)
-  // console.log(mySentMail)
-
-  let sentList;
-  if (mySentMail.length === 0) {
-    sentList = "No Sent Mail to report!"
-  }  
-  else {
-    sentList = mySentMail.map((r, index) =>{
-      return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
-        {r.title}
-        </ListGroup.Item>
-    })
-  }
+  
 
 
 
