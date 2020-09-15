@@ -3,6 +3,7 @@ import requireAuth from '../requireAuth'
 import CKEditor from 'ckeditor4-react';
 import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
 
+
 const Compose = () => {
 
   let [editorData, updateEditorData] = useState("Hello from CKeditor!")
