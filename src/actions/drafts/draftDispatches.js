@@ -42,9 +42,9 @@ export const updateDrafts = (drafts) =>{
             let token = localStorage.getItem('token')
             // NOT SURE THIS IS RIGHT
             let response = await axios.put("http://localhost:3001/drafts", drafts, {headers: {'authorization': token}})
-            let draftList = response.data
+            let updatedDraft = response.data
 
-            dispatch(draftActions.updateDrafts(draftList))
+            dispatch(draftActions.updateDrafts(updatedDraft))
         }
         catch (err) {
             console.log("error updating draft")

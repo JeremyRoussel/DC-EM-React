@@ -4,7 +4,7 @@ import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
-import {getDrafts, addDraft} from '../actions/drafts/draftDispatches'
+import {getDrafts, updateDrafts} from '../actions/drafts/draftDispatches'
 
 
 const Drafts = () => {
@@ -62,12 +62,13 @@ const Drafts = () => {
     // console.log(group)
     let draftObj = {
       drafts: {
+        postID: draftID,
         title: title,
         body: editorData,
         group: group
       }
     }
-    dispatch(addDraft(draftObj))
+    dispatch(updateDrafts(draftObj))
     updateTrigger(!trigger)
   }
 

@@ -16,11 +16,11 @@ class draftActions {
         }
     }
 
-    static updateDrafts(drafts) {
-        // FILTER IT HERE?
+    static updateDrafts(updatedDraft) {
+        
         return {
             type: draftTypes.updateDrafts,
-            drafts: drafts
+            drafts: updatedDraft
         }
     }
 }
