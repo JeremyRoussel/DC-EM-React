@@ -17,6 +17,7 @@ const Drafts = () => {
   let dispatch = useDispatch()
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
+  let [draftID, updateDraftID] = useState("")
 
   useEffect(() => {
 
@@ -38,7 +39,7 @@ const Drafts = () => {
     } 
     else {
       let newDraftList = myDrafts.map((r, index) =>{
-          return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
+          return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body, r.id)}} href={`#link${index}`}>
             {r.title}
           </ListGroup.Item>
       })
@@ -81,11 +82,11 @@ const Drafts = () => {
     updateEditorData(evt.editor.getData())
   }
   
-  let handleShowMe = (text) =>{
+  let handleShowMe = (text, id) =>{
     updateShow(true)
     console.log(text)
     updateEditorData(text)
-
+    updateDraftID(id)
   }
   
   let visibility = show ? "visible" : "hidden"

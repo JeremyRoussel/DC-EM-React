@@ -6,7 +6,6 @@ let drafts = (state = init_state, action) =>{
 
     switch (action.type){
         case draftTypes.getDrafts:
-        // WHY IS STATE AN ARRAY INSTEAD OF AN OBJECT (AS IN PREVIOUS PROJECTS?)
             return [
                 ...state,
                 ...action.drafts
@@ -15,7 +14,7 @@ let drafts = (state = init_state, action) =>{
         case draftTypes.updateDrafts:
             return [
                 ...state,
-                ...action.drafts
+                action.drafts
             ]
         default: 
             return state
