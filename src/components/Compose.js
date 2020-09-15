@@ -7,8 +7,6 @@ const Compose = () => {
 
   let [editorData, updateEditorData] = useState("Hello from CKeditor!")
   let [title, updateTitle] = useState("No Title")
-  let currentTitle = document.getElementById("title")
-  let groupList = document.getElementById('groups')
   let [group, updateGroup] = useState('none')
 
   let handleSend = () =>{
@@ -17,15 +15,20 @@ const Compose = () => {
       console.log(group)
   }
 
+  let handleSave = () =>{
+    console.log("saving this email as a draft")
+    console.log(editorData)
+    console.log(title)
+    console.log(group)
+  }
+
+
   let handleTitle = (e) =>{
     updateTitle(e.target.value)
   }
 
   let handleGroup = (e) =>{
     updateGroup(e.target.value)
-  }
-  let handleDraft = () =>{
-    console.log("saving this email as a draft")
   }
 
   let onEditorChange = (evt) =>{
@@ -47,7 +50,7 @@ const Compose = () => {
         <option value="Home and Garden">Home and Garden</option>
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
-      <Button type="button" className="m-2" onClick={handleDraft}>Save as Draft</Button>
+      <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
     </div>
   </>
   )

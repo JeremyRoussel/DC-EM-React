@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import requireAuth from '../requireAuth'
-import {Tab, Row, Col, ListGroup} from 'react-bootstrap'
+import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getDrafts} from '../actions/drafts/draftDispatches'
@@ -14,25 +14,23 @@ const Drafts = () => {
   let [show, updateShow] = useState(false)
   let myDrafts = useSelector(state => state.drafts)
   let dispatch = useDispatch()
+  let [title, updateTitle] = useState("No Title")
+  let [group, updateGroup] = useState('none')
 
   useEffect(() => {
 
     async function instantiateDrafts() {
       if (myDrafts.length === 0){
         try{
-
           let draftsAction = await getDrafts()
           dispatch(draftsAction)
-
-        } catch (error) {
-
+        } 
+        catch (error) {
           console.log(`Couldn't fetch Drafts. Error: ${error}`)
         }
-
       }}
 
     instantiateDrafts()
-
 
     if (myDrafts.length === 0) {
       updateDraftList("No Drafts to report!")
@@ -47,58 +45,40 @@ const Drafts = () => {
     }
   }, [myDrafts])
 
-  let handleSubmit = () =>{
+
+  let handleSend = () =>{
+    console.log(title)
     console.log(editorData)
+    console.log(group)
+  }
+
+  let handleSave = () =>{
+    console.log("saving this email as a draft")
+    console.log(editorData)
+    console.log(title)
+    console.log(group)
+  }
+
+  let handleTitle = (e) =>{
+    updateTitle(e.target.value)
+  }
+
+  let handleGroup = (e) =>{
+    updateGroup(e.target.value)
   }
 
   let onEditorChange = (evt) =>{
     updateEditorData(evt.editor.getData())
   }
   
-
   let handleShowMe = (text) =>{
     updateShow(true)
     console.log(text)
     updateEditorData(text)
 
   }
-
-  // let myDrafts = [
-  //   {
-  //     title: "first email",
-  //     body: "<p>yabba dabba doo</p>"
-  //   },
-  //   {
-  //     title: "SECOND email",
-  //     body: "<h1>BIG TEXT HERE</h1><p>yabba dabba doo</p><div>whooo</div>"
-  //   },
-  //   {
-  //     title: "ThIRd EmAiL hErE",
-  //     body: "<p>THIS IS MY THIRD email with stuff and things</p>"
-  //   },
-  // ]
-  
-  // console.log(myDrafts)
-  
-  // let draftList;
-  // if (myDrafts.length === 0) {
-  //   draftList = "No Drafts to report!"
-  // } 
-  // else {
-  //   draftList = myDrafts[0].map((r, index) =>{
-  //       return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
-  //         {r.title}
-  //       </ListGroup.Item>
-  //   })
-  // }
-
-
-
-  
   
   let visibility = show ? "visible" : "hidden"
-
-  
 
   return (
     <>
@@ -107,33 +87,27 @@ const Drafts = () => {
           <Col>
             <ListGroup>
               {draftList}
-              {/* <ListGroup.Item action onClick={handleShowMe} href="#link1">
-                First email
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={handleShowMe} href="#link2">
-                Second email
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={handleShowMe} href="#link3">
-                Third email
-              </ListGroup.Item>
-              <ListGroup.Item action onClick={handleShowMe} href="#link4">
-                Fourth email
-              </ListGroup.Item> */}
-
             </ListGroup>
           </Col>
-          
         </Row>
       </Tab.Container>
 
     <Row>
       <Col style={{visibility: visibility}}>
         <div className="App m-5">
+        <input type="text" id="title" onChange={handleTitle}></input>
           <CKEditor
               data={editorData} 
               onChange={onEditorChange}
           />
-          <button type="button" onClick={handleSubmit}>Submit</button>
+      <label>Choose an email list:</label><br></br>
+      <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+        <option value="BeerList">BeerList</option>
+        <option value="Car Lovers">Car Lovers</option>
+        <option value="Home and Garden">Home and Garden</option>
+      </select>
+      <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
+      <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
         </div>
       </Col>
     </Row>
