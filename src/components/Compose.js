@@ -1,14 +1,21 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import requireAuth from '../requireAuth'
 import CKEditor from 'ckeditor4-react';
+import {useDispatch} from 'react-redux'
 import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
-
+import {addDraft} from '../actions/drafts/draftDispatches'
 
 const Compose = () => {
 
   let [editorData, updateEditorData] = useState("Hello from CKeditor!")
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
+  let [trigger, updateTrigger] = useState(false)
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+    updateEditorData("")
+  }, [trigger])
 
   let handleSend = () =>{
       console.log(title)
@@ -18,9 +25,18 @@ const Compose = () => {
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
-    console.log(editorData)
-    console.log(title)
-    console.log(group)
+    // console.log(editorData)
+    // console.log(title)
+    // console.log(group)
+    let draftObj = {
+      drafts: {
+        title: title,
+        body: editorData,
+        group: group
+      }
+    }
+    dispatch(addDraft(draftObj))
+    updateTrigger(!trigger)
   }
 
   let handleTitle = (e) =>{
