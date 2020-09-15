@@ -22,8 +22,8 @@ const Header = () => {
     }
 return (
     <>
-        <Navbar bg="primary" variant="dark">
-            <Navbar.Brand href="#home">MegaMail</Navbar.Brand>
+        <Navbar bg="success" variant="dark">
+            <Navbar.Brand href="#home"><img src="../style/MegaMailLogo1.png" alt="logo"></img></Navbar.Brand>
             <Nav className="mr-auto">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/About">About Us</Link>
