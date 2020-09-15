@@ -27,10 +27,27 @@ export const addDraft = (drafts) =>{
             let response = await axios.post("http://localhost:3001/drafts", drafts, {headers: {'authorization': token}})
             let draftList = response.data
 
-            dispatch(draftActions.updateDrafts(draftList))
+            dispatch(draftActions.addDrafts(draftList))
         }
         catch(err) {
             console.log("error adding draft")
+        }
+    }
+}
+
+export const updateDrafts = (drafts) =>{
+
+    return async (dispatch) =>{
+        try{
+            let token = localStorage.getItem('token')
+            // NOT SURE THIS IS RIGHT
+            let response = await axios.put("http://localhost:3001/drafts", drafts, {headers: {'authorization': token}})
+            let draftList = response.data
+
+            dispatch(draftActions.updateDrafts(draftList))
+        }
+        catch (err) {
+            console.log("error updating draft")
         }
     }
 }

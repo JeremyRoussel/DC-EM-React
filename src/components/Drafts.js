@@ -3,6 +3,7 @@ import requireAuth from '../requireAuth'
 import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
+// CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
 import {getDrafts, addDraft} from '../actions/drafts/draftDispatches'
 
 

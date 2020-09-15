@@ -11,10 +11,15 @@ let drafts = (state = init_state, action) =>{
                 ...action.drafts
             ]
         // NOT SURE THIS ONE IS CORRECT
-        case draftTypes.updateDrafts:
+        case draftTypes.addDrafts:
             return [
                 ...state,
                 action.drafts
+            ]
+        case draftTypes.updateDrafts:
+            // DO THE FILTERING HERE??
+            return [
+                ...state
             ]
         default: 
             return state

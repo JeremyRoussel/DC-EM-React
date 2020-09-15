@@ -9,7 +9,15 @@ class draftActions {
         }
     }
 
+    static addDrafts(drafts) {
+        return {
+            type: draftTypes.addDrafts,
+            drafts: drafts
+        }
+    }
+
     static updateDrafts(drafts) {
+        // FILTER IT HERE?
         return {
             type: draftTypes.updateDrafts,
             drafts: drafts
