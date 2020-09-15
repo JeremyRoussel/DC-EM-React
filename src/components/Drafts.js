@@ -3,7 +3,7 @@ import requireAuth from '../requireAuth'
 import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
-import {getDrafts} from '../actions/drafts/draftDispatches'
+import {getDrafts, addDraft} from '../actions/drafts/draftDispatches'
 
 
 const Drafts = () => {
@@ -12,6 +12,7 @@ const Drafts = () => {
   let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
   let [draftList, updateDraftList] = useState("No Drafts to report!")
   let [show, updateShow] = useState(false)
+  let [trigger, updateTrigger] = useState(false)
   let myDrafts = useSelector(state => state.drafts)
   let dispatch = useDispatch()
   let [title, updateTitle] = useState("No Title")
@@ -43,7 +44,7 @@ const Drafts = () => {
       })
       updateDraftList(newDraftList)
     }
-  }, [myDrafts])
+  }, [myDrafts, trigger])
 
 
   let handleSend = () =>{
@@ -54,9 +55,18 @@ const Drafts = () => {
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
-    console.log(editorData)
-    console.log(title)
-    console.log(group)
+    // console.log(editorData)
+    // console.log(title)
+    // console.log(group)
+    let draftObj = {
+      drafts: {
+        title: title,
+        body: editorData,
+        group: group
+      }
+    }
+    dispatch(addDraft(draftObj))
+    updateTrigger(!trigger)
   }
 
   let handleTitle = (e) =>{
