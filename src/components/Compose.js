@@ -22,7 +22,6 @@ const Compose = () => {
     console.log(group)
   }
 
-
   let handleTitle = (e) =>{
     updateTitle(e.target.value)
   }
