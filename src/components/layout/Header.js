@@ -2,6 +2,8 @@ import React from 'react'
 import {Nav, Navbar} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import logo from '../style/MegaMailLogo1.png'
+import '../style/Header.css';
 
 
 const Header = () => {
@@ -22,8 +24,8 @@ const Header = () => {
     }
 return (
     <>
-        <Navbar bg="success" variant="dark">
-            <Navbar.Brand href="#home"><img src="../style/MegaMailLogo1.png" alt="logo"></img></Navbar.Brand>
+        <Navbar class='navbar-custom'>
+            <Navbar.Brand href="#home"><img src={logo} alt="logo"></img></Navbar.Brand>
             <Nav className="mr-auto">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/About">About Us</Link>
