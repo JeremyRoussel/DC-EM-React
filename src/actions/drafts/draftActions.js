@@ -23,6 +23,13 @@ class draftActions {
             drafts: updatedDraft
         }
     }
+
+    static deleteDraft(draftID) {
+        return {
+            type: draftTypes.deleteDraft,
+            draftID: draftID
+        }
+    }
 }
 
 export default draftActions

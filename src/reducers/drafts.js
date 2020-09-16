@@ -15,12 +15,18 @@ let drafts = (state = init_state, action) =>{
                 action.drafts
             ]
         case draftTypes.updateDrafts:
-            
             return [
                 ...state.filter(r =>{
                     return (r.id !== action.drafts[0].id)
                 }),
                 action.drafts[0] 
+            ]
+        // SOMETHING WRONG WITH THIS?
+        case draftTypes.deleteDraft:
+            return [
+                ...state.filter(r =>{
+                    return (r.id != action.draftID)
+                })
             ]
         default: 
             return state

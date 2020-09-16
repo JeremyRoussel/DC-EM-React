@@ -61,10 +61,10 @@ export const deleteDraft = (draftID) =>{
             console.log(token)
             // SOMETHING IS WRONG WITH THIS -- THIS IS WHERE IT STOPS
             let response = await axios.delete(`http://localhost:3001/drafts/${draftID}`, {headers: {'authorization': token}})
-            let updatedDrafts = response.data
+            // let updatedDrafts = response.data
             
 
-            dispatch(draftActions.updateDrafts(updatedDrafts))
+            dispatch(draftActions.deleteDraft(draftID))
         }
         catch (err) {
             console.log("error deleting draft")
