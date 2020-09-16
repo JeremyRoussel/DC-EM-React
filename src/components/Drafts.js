@@ -40,7 +40,7 @@ const Drafts = () => {
     } 
     else {
       let newDraftList = myDrafts.map((r, index) =>{
-          return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body, r.id)}} href={`#link${index}`}>
+          return <ListGroup.Item key={index} onClick={(e)=>{handleShowMe(e, r.body, r.id, r.title)}} href={`#link${index}`}>
             {r.title}
           </ListGroup.Item>
       })
@@ -91,11 +91,15 @@ const Drafts = () => {
     updateEditorData(evt.editor.getData())
   }
   
-  let handleShowMe = (text, id) =>{
+  let handleShowMe = (e, text, id, title) =>{
     updateShow(true)
-    console.log(text)
+    // console.log(text)
     updateEditorData(text)
     updateDraftID(id)
+    updateTitle(title)
+    // console.log(title)
+    // console.log(e)
+    // titleInput.current = title
   }
   
   let visibility = show ? "visible" : "hidden"
@@ -115,7 +119,7 @@ const Drafts = () => {
     <Row>
       <Col style={{visibility: visibility}}>
         <div className="App m-5">
-        <input type="text" id="title" onChange={handleTitle}></input>
+        <input type="text" value={title} onChange={handleTitle}></input>
           <CKEditor
               data={editorData} 
               onChange={onEditorChange}
