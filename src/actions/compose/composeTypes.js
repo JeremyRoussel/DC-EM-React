@@ -1,0 +1,1 @@
+export const SENT_SUCCESS = "SENT_SUCCESS"

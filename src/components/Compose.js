@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import requireAuth from '../requireAuth'
 import CKEditor from 'ckeditor4-react';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
 import {addDraft} from '../actions/drafts/draftDispatches'
+import {sendEmail} from '../actions/compose/composeDispatches' 
+
 
 const Compose = () => {
 
@@ -12,15 +14,24 @@ const Compose = () => {
   let [group, updateGroup] = useState('none')
   let [trigger, updateTrigger] = useState(false)
   let dispatch = useDispatch()
+  let response = useSelector(state => state.response)
 
   useEffect(()=>{
     updateEditorData("")
-  }, [trigger])
+  }, [trigger, response])
 
   let handleSend = () =>{
       console.log(title)
       console.log(editorData)
       console.log(group)
+      let sendObj = {
+        send: {
+          title: title,
+          body: editorData,
+          group: group
+        }
+      }
+      dispatch(sendEmail(sendObj))
   }
 
   let handleSave = () =>{
@@ -37,6 +48,7 @@ const Compose = () => {
     }
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
+    
   }
 
   let handleTitle = (e) =>{
@@ -67,6 +79,7 @@ const Compose = () => {
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
       <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
+      <div>{response}</div>
     </div>
   </>
   )
