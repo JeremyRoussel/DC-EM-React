@@ -7,7 +7,6 @@ let sent = (state = init_state, action) =>{
 
         case sentTypes.getSent:
             return [
-                ...state,
                 ...action.sent
             ]
         case sentTypes.updateSent:

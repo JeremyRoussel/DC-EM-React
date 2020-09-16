@@ -7,7 +7,6 @@ let drafts = (state = init_state, action) =>{
     switch (action.type){
         case draftTypes.getDrafts:
             return [
-                ...state,
                 ...action.drafts
             ]
         case draftTypes.addDrafts:

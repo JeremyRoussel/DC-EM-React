@@ -4,6 +4,7 @@ import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getSent} from '../actions/sent/sentDispatches'
+import {addDraft} from '../actions/drafts/draftDispatches'
 
 
 const Sentmail = () =>{
@@ -14,6 +15,8 @@ const Sentmail = () =>{
   let [show, updateShow] = useState(false)
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
+  let [draftID, updateDraftID] = useState("")
+  let [trigger, updateTrigger] = useState(false)
   let mySentMail = useSelector(state => state.sent)
   let dispatch = useDispatch()
 
@@ -38,14 +41,14 @@ const Sentmail = () =>{
     }  
     else {
       let newSentList = mySentMail.map((r, index) =>{
-        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body)}} href={`#link${index}`}>
+        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body, r.id)}} href={`#link${index}`}>
           {r.title}
           </ListGroup.Item>
       });
       updateSentList(newSentList)
     }
 
-  }, [mySentMail])
+  }, [mySentMail, trigger])
 
   let handleSend = () =>{
     console.log(title)
@@ -55,9 +58,19 @@ const Sentmail = () =>{
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
-    console.log(editorData)
-    console.log(title)
-    console.log(group)
+    // console.log(editorData)
+    // console.log(title)
+    // console.log(group)
+    let draftObj = {
+      drafts: {
+        postID: draftID,
+        title: title,
+        body: editorData,
+        group: group
+      }
+    }
+    dispatch(addDraft(draftObj))
+    updateTrigger(!trigger)
   }
 
   let handleTitle = (e) =>{
@@ -72,10 +85,11 @@ const Sentmail = () =>{
     updateEditorData(evt.editor.getData())
   }
 
-  let handleShowMe = (text) =>{
+  let handleShowMe = (text, id) =>{
     updateShow(true)
     console.log(text)
     updateEditorData(text)
+    updateDraftID(id)
   }
 
   let visibility = show ? "visible" : "hidden"
