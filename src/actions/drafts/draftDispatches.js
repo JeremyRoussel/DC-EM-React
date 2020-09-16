@@ -60,7 +60,7 @@ export const deleteDraft = (draftID) =>{
             let token = localStorage.getItem('token')
             console.log(token)
             // SOMETHING IS WRONG WITH THIS -- THIS IS WHERE IT STOPS
-            let response = await axios.delete("http://localhost:3001/drafts", draftID, {headers: {'authorization': token}})
+            let response = await axios.delete(`http://localhost:3001/drafts/${draftID}`, {headers: {'authorization': token}})
             let updatedDrafts = response.data
             
 
