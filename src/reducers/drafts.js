@@ -6,16 +6,27 @@ let drafts = (state = init_state, action) =>{
 
     switch (action.type){
         case draftTypes.getDrafts:
-        // WHY IS STATE AN ARRAY INSTEAD OF AN OBJECT (AS IN PREVIOUS PROJECTS?)
             return [
-                ...state,
                 ...action.drafts
             ]
-        // NOT SURE THIS ONE IS CORRECT
-        case draftTypes.updateDrafts:
+        case draftTypes.addDrafts:
             return [
                 ...state,
-                ...action.drafts
+                action.drafts
+            ]
+        case draftTypes.updateDrafts:
+            return [
+                ...state.filter(r =>{
+                    return (r.id !== action.drafts[0].id)
+                }),
+                action.drafts[0] 
+            ]
+        // SOMETHING WRONG WITH THIS?
+        case draftTypes.deleteDraft:
+            return [
+                ...state.filter(r =>{
+                    return (r.id != action.draftID)
+                })
             ]
         default: 
             return state

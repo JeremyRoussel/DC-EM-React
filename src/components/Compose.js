@@ -1,20 +1,42 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import requireAuth from '../requireAuth'
 import CKEditor from 'ckeditor4-react';
+import {useDispatch} from 'react-redux'
 import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
+import {addDraft} from '../actions/drafts/draftDispatches'
 
 const Compose = () => {
 
   let [editorData, updateEditorData] = useState("Hello from CKeditor!")
   let [title, updateTitle] = useState("No Title")
-  let currentTitle = document.getElementById("title")
-  let groupList = document.getElementById('groups')
   let [group, updateGroup] = useState('none')
+  let [trigger, updateTrigger] = useState(false)
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+    updateEditorData("")
+  }, [trigger])
 
   let handleSend = () =>{
       console.log(title)
       console.log(editorData)
       console.log(group)
+  }
+
+  let handleSave = () =>{
+    console.log("saving this email as a draft")
+    // console.log(editorData)
+    // console.log(title)
+    // console.log(group)
+    let draftObj = {
+      drafts: {
+        title: title,
+        body: editorData,
+        group: group
+      }
+    }
+    dispatch(addDraft(draftObj))
+    updateTrigger(!trigger)
   }
 
   let handleTitle = (e) =>{
@@ -23,9 +45,6 @@ const Compose = () => {
 
   let handleGroup = (e) =>{
     updateGroup(e.target.value)
-  }
-  let handleDraft = () =>{
-    console.log("saving this email as a draft")
   }
 
   let onEditorChange = (evt) =>{
@@ -47,7 +66,7 @@ const Compose = () => {
         <option value="Home and Garden">Home and Garden</option>
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
-      <Button type="button" className="m-2" onClick={handleDraft}>Save as Draft</Button>
+      <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
     </div>
   </>
   )

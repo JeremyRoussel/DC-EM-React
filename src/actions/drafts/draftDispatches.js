@@ -19,39 +19,56 @@ export const getDrafts = async () =>{
     }
 }
 
-// ************************************************************************
-// THIS IS THE OLD STUFF WRITTEN PRE-CONTACT FILES ************************
+export const addDraft = (drafts) =>{
 
+    return async (dispatch) =>{
+        try{
+            let token = localStorage.getItem('token')
+            let response = await axios.post("http://localhost:3001/drafts", drafts, {headers: {'authorization': token}})
+            let draftList = response.data
 
-// require('dotenv').config()
+            dispatch(draftActions.addDrafts(draftList))
+        }
+        catch(err) {
+            console.log("error adding draft")
+        }
+    }
+}
 
-// const AUTH_POST_ROUTE = process.env.AUTH_POST_ROUTE
+export const updateDrafts = (drafts) =>{
 
-// export const getDrafts = (formProps) =>{
-    
-//     return async (dispatch) =>{
-//         try {
-//             // let url = AUTH_POST_ROUT + "drafts"
-//             // Do I need to set up a route on the server for this? 
-//             let response = await axios.post("http://localhost:3001/drafts", formProps);
-//             console.log(response)
-//             // What will the response look like?
-//             // How to dispatch? Currently it needs a userID.
-//             dispatch(draftActions.getDrafts())
+    return async (dispatch) =>{
+        try{
+            let token = localStorage.getItem('token')
+            // NOT SURE THIS IS RIGHT
+            let response = await axios.put("http://localhost:3001/drafts", drafts, {headers: {'authorization': token}})
+            let updatedDraft = response.data
 
-//         }
-//         catch (e) {
-//             console.log("didn't work")
-//             dispatch({
-//                 type: draftTypes.getDrafts,
-//                 payload: "Couldn't get drafts"
-//             })
-//         }
-//     }
+            dispatch(draftActions.updateDrafts(updatedDraft))
+        }
+        catch (err) {
+            console.log("error updating draft")
+        }
+    }
+}
 
-// }
+export const deleteDraft = (draftID) =>{
 
-// export const updateDrafts = () =>{
+    return async (dispatch) =>{
+        try{
 
+            let token = localStorage.getItem('token')
+            console.log(token)
+            // SOMETHING IS WRONG WITH THIS -- THIS IS WHERE IT STOPS
+            let response = await axios.delete(`http://localhost:3001/drafts/${draftID}`, {headers: {'authorization': token}})
+            // let updatedDrafts = response.data
+            
 
-// }
+            dispatch(draftActions.deleteDraft(draftID))
+        }
+        catch (err) {
+            console.log("error deleting draft")
+        }
+    }
+}
+

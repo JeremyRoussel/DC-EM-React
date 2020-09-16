@@ -15,3 +15,21 @@ export const getSent = async () =>{
     }
 }
 
+export const addSent = async (sent, callback) =>{
+
+    return async (dispatch) =>{
+        try{
+            let token = localStorage.getItem("token")
+            let response = await axios.post("http://localhost:3001/drafts", sent, {headers: {'authorization': token}})
+            let sentList = response.data;
+
+            dispatch(sentActions.updateSent(sentList))
+
+            callback()
+        }  
+        catch (err) {
+            console.log("Couldn't update sent mail")
+        }
+    }
+}
+
