@@ -32,9 +32,7 @@ return (
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/About">About Us</Link>
                 <Link className="nav-link" to="/Pricing">Pricing</Link>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-                </li>
+
                 </Row>
             </Nav>
             <Nav>
