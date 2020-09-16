@@ -6,11 +6,13 @@ import auth from './auth'
 import contacts from './contacts'
 import drafts from './drafts'
 import sent from './sent'
+import sendEmail from './sendEmail'
 
 export default combineReducers({
     auth: auth,
     form: formReducer,
     contacts: contacts,
     drafts: drafts,
-    sent: sent
+    sent: sent,
+    result: sendEmail
 })
