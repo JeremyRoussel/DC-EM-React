@@ -4,7 +4,7 @@ import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
-import {getDrafts, updateDrafts} from '../actions/drafts/draftDispatches'
+import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
 
 
 const Drafts = () => {
@@ -72,6 +72,13 @@ const Drafts = () => {
     updateTrigger(!trigger)
   }
 
+  let handleDelete = () =>{
+    console.log("deleting the CRAP out of this email...")
+    console.log(draftID)
+    dispatch(deleteDraft(draftID))
+    updateTrigger(!trigger)
+  }
+
   let handleTitle = (e) =>{
     updateTitle(e.target.value)
   }
@@ -121,6 +128,7 @@ const Drafts = () => {
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
       <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
+      <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button>
         </div>
       </Col>
     </Row>
