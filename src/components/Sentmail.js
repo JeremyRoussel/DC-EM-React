@@ -41,10 +41,10 @@ const Sentmail = () =>{
     }  
     else {
       let newSentList = mySentMail.map((r, index) =>{
-        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body, r.id)}} href={`#link${index}`}>
+        return <ListGroup.Item key={index} onClick={()=>{handleShowMe(r.body, r.id, r.title)}} href={`#link${index}`}>
           {r.title}
           </ListGroup.Item>
-      });
+      })
       updateSentList(newSentList)
     }
 
@@ -85,11 +85,12 @@ const Sentmail = () =>{
     updateEditorData(evt.editor.getData())
   }
 
-  let handleShowMe = (text, id) =>{
+  let handleShowMe = (text, id, title) =>{
     updateShow(true)
     console.log(text)
     updateEditorData(text)
     updateDraftID(id)
+    updateTitle(title)
   }
 
   let visibility = show ? "visible" : "hidden"
@@ -109,7 +110,7 @@ const Sentmail = () =>{
     <Row>
       <Col style={{visibility: visibility}}>
         <div className="App m-5">
-        <input type="text" id="title" onChange={handleTitle}></input>
+        <input type="text" value={title} onChange={handleTitle}></input>
           <CKEditor
               data={editorData} 
               onChange={onEditorChange}
