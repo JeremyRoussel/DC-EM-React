@@ -46,7 +46,7 @@ const Drafts = () => {
       })
       updateDraftList(newDraftList)
     }
-  }, [myDrafts, trigger])
+  }, [myDrafts, trigger, show])
 
 
   let handleSend = () =>{
@@ -77,6 +77,8 @@ const Drafts = () => {
     console.log(draftID)
     dispatch(deleteDraft(draftID))
     updateTrigger(!trigger)
+    updateShow(false)
+
   }
 
   let handleTitle = (e) =>{
