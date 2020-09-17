@@ -25,17 +25,15 @@ const Sentmail = () =>{
 
   useEffect(()=>{
 
-    async function instantiateSentList () {
-      if (sentList.length === 0) {
+    function instantiateSentList () {
         try {
-          let sentAction = await getSent();
-          dispatch(sentAction)
+          let sentAction = getSent()
+          .then(dispatch(sentAction))
         }
         catch (err) {
           console.log(`Error trying to fetch Sentmail: ${err}`)
         }
       }  
-    }
 
     instantiateSentList();
 
@@ -123,8 +121,8 @@ const Sentmail = () =>{
     }
   }
 
-  console.log("groupsList:")
-  console.log(groupsList)
+  // console.log("groupsList:")
+  // console.log(groupsList)
 
   let myGroups;
 

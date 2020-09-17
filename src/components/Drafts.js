@@ -134,8 +134,8 @@ const Drafts = () => {
     }
   }
 
-  console.log("groupsList:")
-  console.log(groupsList)
+  // console.log("groupsList:")
+  // console.log(groupsList)
 
   let myGroups;
 

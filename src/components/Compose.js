@@ -5,7 +5,20 @@ import {useDispatch, useSelector} from 'react-redux'
 import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches' 
+import { useHistory } from 'react-router-dom';
 
+
+let parseEmails = (contacts, group) =>{
+  
+  let emailList = []
+  for (let i of contacts) {
+    if (i.group === group) {
+      emailList.push(i.email)
+    }
+  }
+  let emailString = emailList.join(',')
+  console.log(emailString)
+}
 
 const Compose = () => {
 
@@ -17,29 +30,36 @@ const Compose = () => {
   let dispatch = useDispatch()
   let response = useSelector(state => state.response)
   let contacts = useSelector(state => state.contacts.list)
-  console.log(contacts)
-
+  let history = useHistory()
+  // console.log(contacts)
+  parseEmails(contacts, 'coders')
 
   useEffect(()=>{
-    updateEditorData("")
+    updateEditorData("");
+    // if (contacts) && (emailAddresses ){
+
+    // }
   }, [trigger, response])
 
   let handleSend = () =>{
+    //parseEmails(GET THE GROUP IN HERE SOMEHOW)
     if (emailAddresses.length === 0) {
       alert("Please choose a mailing list!")
       return
     }
 
-    let emailString = emailAddresses.join(",")
+    // let emailString = emailAddresses.join(", ")
     // console.log(emailString)
     let sendObj = {
       send: {
         title: title,
         body: editorData,
-        group: emailString
+        group: emailAddresses
       }
     }
-    dispatch(sendEmail(sendObj))
+    dispatch(sendEmail(sendObj, ()=>{
+      history.push('/sentmail')
+    }))
 }
 
   let handleSave = () =>{
@@ -63,8 +83,8 @@ const Compose = () => {
     updateGroup(e.target.value)
     updateEmailAddresses(groupsList[e.target.value])
 
-    console.log("emailAddresses:")
-    console.log(emailAddresses)
+    // console.log("emailAddresses:")
+    // console.log(emailAddresses)
   }
 
   let onEditorChange = (evt) =>{
@@ -81,8 +101,8 @@ const Compose = () => {
     }
   }
 
-  console.log("groupsList:")
-  console.log(groupsList)
+  // console.log("groupsList:")
+  // console.log(groupsList)
 
   let myGroups;
 
