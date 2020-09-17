@@ -26,21 +26,20 @@ const BaseLayout = (props) => {
     
     <>
  
-        <Header />
-        <ThemeProvider theme={theme}>
-        
-    {/* <Container className="m-0">
-        <Row className = "mt-3"> */}
-            <Col style={{visibility:visibility}} className="">      
-                <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
-                <Sidebar open={open} setOpen={setOpen} id={menuId} />
-            </Col>
-            <Col className="col-10 offset-1">
-                {props.children}
-            </Col>
-        {/* </Row>
-    </Container> */}
-        </ThemeProvider>
+    <Header />
+    <ThemeProvider theme={theme}>
+{/* <Container className="m-0">
+    <Row className = "mt-3"> */}
+        <Col style={{visibility:visibility}} className="">      
+            <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
+            <Sidebar open={open} setOpen={setOpen} id={menuId} />
+        </Col>
+        <Col className="col-10 offset-1">
+            {props.children}
+        </Col>
+    {/* </Row>
+</Container> */}
+    </ThemeProvider>
       
     </>
     
