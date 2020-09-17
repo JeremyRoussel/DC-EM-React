@@ -5,7 +5,7 @@ import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
 import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
-
+import {sendEmail} from '../actions/compose/composeDispatches'
 
 const Drafts = () => {
   
@@ -19,6 +19,8 @@ const Drafts = () => {
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
   let [draftID, updateDraftID] = useState("")
+  let contacts = useSelector(state => state.contacts.list)
+  let [emailAddresses, updateEmailAddresses] = useState([])
 
   useEffect(() => {
 
@@ -50,9 +52,19 @@ const Drafts = () => {
 
 
   let handleSend = () =>{
-    console.log(title)
-    console.log(editorData)
-    console.log(group)
+    let emailString = emailAddresses.join(",")
+    console.log(emailString)
+    let sendObj = {
+      send: {
+        title: title,
+        body: editorData,
+        group: emailString
+      }
+    }
+    dispatch(sendEmail(sendObj))
+    dispatch(deleteDraft(draftID))
+    updateTrigger(!trigger)
+    updateShow(false)
   }
 
   let handleSave = () =>{
@@ -87,6 +99,7 @@ const Drafts = () => {
 
   let handleGroup = (e) =>{
     updateGroup(e.target.value)
+    updateEmailAddresses(groupsList[e.target.value])
   }
 
   let onEditorChange = (evt) =>{
@@ -106,6 +119,29 @@ const Drafts = () => {
   
   let visibility = show ? "visible" : "hidden"
 
+  let groupsList = {}
+  for (let i of contacts) {
+    if (groupsList[i.group]) {
+      groupsList[i.group].push(i.email)
+    }
+    else {
+      groupsList[i.group] = [i.email]
+    }
+  }
+
+  console.log("groupsList:")
+  console.log(groupsList)
+
+  let myGroups;
+
+  if (Object.keys(groupsList).length === 0) {
+    myGroups = <option>Please add some Subscribers!</option>
+  }
+  else {
+    myGroups = Object.keys(groupsList).map((r, index) =>{
+    return <option key={index} value={r}>{r}</option>
+    })
+  } 
   return (
     <>
       <Tab.Container id="list-group-tabs-example">
@@ -128,9 +164,8 @@ const Drafts = () => {
           />
       <label>Choose an email list:</label><br></br>
       <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-        <option value="BeerList">BeerList</option>
-        <option value="Car Lovers">Car Lovers</option>
-        <option value="Home and Garden">Home and Garden</option>
+        <option value="none">Please Select a Mailing Group</option>
+        {myGroups}
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
       <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
