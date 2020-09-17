@@ -5,7 +5,7 @@ import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 import {getSent} from '../actions/sent/sentDispatches'
 import {addDraft} from '../actions/drafts/draftDispatches'
-
+import {sendEmail} from '../actions/compose/composeDispatches'
 
 const Sentmail = () =>{
 
@@ -17,8 +17,11 @@ const Sentmail = () =>{
   let [group, updateGroup] = useState('none')
   let [draftID, updateDraftID] = useState("")
   let [trigger, updateTrigger] = useState(false)
+  let [emailAddresses, updateEmailAddresses] = useState([])
   let mySentMail = useSelector(state => state.sent)
   let dispatch = useDispatch()
+  let response = useSelector(state => state.response)
+  let contacts = useSelector(state => state.contacts.list)
 
   useEffect(()=>{
 
@@ -51,9 +54,18 @@ const Sentmail = () =>{
   }, [mySentMail, trigger])
 
   let handleSend = () =>{
-    console.log(title)
-    console.log(editorData)
-    console.log(group)
+    let emailString = emailAddresses.join(",")
+    console.log(emailString)
+    let sendObj = {
+      send: {
+        title: title,
+        body: editorData,
+        group: emailString
+      }
+    }
+    dispatch(sendEmail(sendObj))
+    updateTrigger(!trigger)
+    updateShow(false)
   }
 
   let handleSave = () =>{
@@ -79,6 +91,7 @@ const Sentmail = () =>{
 
   let handleGroup = (e) =>{
     updateGroup(e.target.value)
+    updateEmailAddresses(groupsList[e.target.value])
   }
 
   let onEditorChange = (evt) =>{
@@ -95,6 +108,29 @@ const Sentmail = () =>{
 
   let visibility = show ? "visible" : "hidden"
   
+  let groupsList = {}
+  for (let i of contacts) {
+    if (groupsList[i.group]) {
+      groupsList[i.group].push(i.email)
+    }
+    else {
+      groupsList[i.group] = [i.email]
+    }
+  }
+
+  console.log("groupsList:")
+  console.log(groupsList)
+
+  let myGroups;
+
+  if (Object.keys(groupsList).length === 0) {
+    myGroups = <option>Please add some Subscribers!</option>
+  }
+  else {
+    myGroups = Object.keys(groupsList).map((r, index) =>{
+    return <option key={index} value={r}>{r}</option>
+    })
+  } 
   return (
     <>
       <Tab.Container id="list-group-tabs-example">
@@ -117,9 +153,8 @@ const Sentmail = () =>{
           />
       <label>Choose an email list:</label><br></br>
       <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-        <option value="BeerList">BeerList</option>
-        <option value="Car Lovers">Car Lovers</option>
-        <option value="Home and Garden">Home and Garden</option>
+        <option value="none">Please Select a Mailing Group</option>
+        {myGroups}
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
       <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>        </div>
