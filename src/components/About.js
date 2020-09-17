@@ -9,9 +9,9 @@ const About = () => {
   return (
     <>
     <Container>
-    <Col className="col-8 offset-2">
+    {/* <Col className="col-8 offset-2"> */}
         <Row className="d-flex justify-content-center mt-5">
-            <Card style={{ width: '15rem' }} className="m-2">
+            <Card style={{ width: '25rem' }} className="m-2">
                 <Card.Img variant="top" src={jeremy} />
                 <Card.Body>
                     <Card.Title>Jeremy Roussel</Card.Title>
@@ -24,7 +24,7 @@ const About = () => {
             </Card>
         
 
-            <Card style={{ width: '15rem' }} className="m-2">
+            <Card style={{ width: '25rem' }} className="m-2">
                 <Card.Img variant="top" src={woody} />
                 <Card.Body>
                     <Card.Title>Woody Connell</Card.Title>
@@ -39,7 +39,7 @@ const About = () => {
         </Row>
         <Row className="d-flex justify-content-center mt-5">
 
-            <Card style={{ width: '15rem' }} className="m-1">
+            <Card style={{ width: '25rem' }} className="m-1">
                 <Card.Img variant="top" src={dan} />
                 <Card.Body>
                     <Card.Title>Dan Gelok</Card.Title>
@@ -52,7 +52,7 @@ const About = () => {
                     
                 </Card.Body>
             </Card>
-            <Card style={{ width: '15rem' }} className="m-1">
+            <Card style={{ width: '25rem' }} className="m-1">
                 <Card.Img variant="top" src={chris} />
                 <Card.Body>
                     <Card.Title>Chris David</Card.Title>
@@ -65,7 +65,7 @@ const About = () => {
                 </Card.Body>
             </Card>
         </Row>
-    </Col>
+    {/* </Col> */}
     </Container>
     </>
   )
