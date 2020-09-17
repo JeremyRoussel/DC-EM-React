@@ -9,7 +9,7 @@ h4,
 h5,
 h6 {
     font-family: "Nova Square";
-    font-weight: 800 !important
+    font-weight: 800 
 }
 
 
@@ -22,7 +22,7 @@ h6 {
 }
 
 .bg-black {
-    background-color: #000 !important;
+    background-color: #000 
 }
 
 .rounded-pill {
@@ -134,9 +134,8 @@ header.masthead .bg-circle-4 {
 .btn-secondary:active,
 .btn-secondary:focus,
 .btn-secondary:hover {
-    background-color: #cc5500 !important;
-    border-color: #cc5500 !important;
-}
+    background-color: #cc5500 
+    border-color: #cc5500 
 
 .btn-secondary:focus {
     box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
