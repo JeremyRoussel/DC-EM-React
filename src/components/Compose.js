@@ -7,6 +7,18 @@ import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches' 
 
 
+let parseEmails = (contacts, group) =>{
+  
+  let emailList = []
+  for (let i of contacts) {
+    if (i.group === group) {
+      emailList.push(i.email)
+    }
+  }
+  let emailString = emailList.join(',')
+  console.log(emailString)
+}
+
 const Compose = () => {
 
   let [editorData, updateEditorData] = useState("Hello from CKeditor!")
@@ -17,26 +29,30 @@ const Compose = () => {
   let dispatch = useDispatch()
   let response = useSelector(state => state.response)
   let contacts = useSelector(state => state.contacts.list)
-  console.log(contacts)
-
+  // console.log(contacts)
+  parseEmails(contacts, 'coders')
 
   useEffect(()=>{
-    updateEditorData("")
+    updateEditorData("");
+    // if (contacts) && (emailAddresses ){
+
+    // }
   }, [trigger, response])
 
   let handleSend = () =>{
+    //parseEmails(GET THE GROUP IN HERE SOMEHOW)
     if (emailAddresses.length === 0) {
       alert("Please choose a mailing list!")
       return
     }
 
-    let emailString = emailAddresses.join(",")
-    // console.log(emailString)
+    let emailString = emailAddresses.join(", ")
+    console.log(emailString)
     let sendObj = {
       send: {
         title: title,
         body: editorData,
-        group: emailString
+        group: emailAddresses
       }
     }
     dispatch(sendEmail(sendObj))
@@ -81,8 +97,8 @@ const Compose = () => {
     }
   }
 
-  console.log("groupsList:")
-  console.log(groupsList)
+  // console.log("groupsList:")
+  // console.log(groupsList)
 
   let myGroups;
 
