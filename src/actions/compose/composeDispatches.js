@@ -2,7 +2,7 @@ import axios from 'axios'
 import composeActions from './composeActions'
 import * as composeTypes from './composeTypes'
 
-export const sendEmail = (sendObj) =>{
+export const sendEmail = (sendObj, callback) =>{
 
     return async (dispatch) =>{
 
@@ -14,11 +14,14 @@ export const sendEmail = (sendObj) =>{
             let response = serverResponse.data;
 
             dispatch(composeActions.sentSuccess(response))
+
+            callback()
         }
         catch (err) {
             console.log("error sending email")
             dispatch(composeActions.sentSuccess("ERROR"))
         }
+
     }
     
 }

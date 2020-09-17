@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches' 
+import { useHistory } from 'react-router-dom';
 
 
 let parseEmails = (contacts, group) =>{
@@ -29,6 +30,7 @@ const Compose = () => {
   let dispatch = useDispatch()
   let response = useSelector(state => state.response)
   let contacts = useSelector(state => state.contacts.list)
+  let history = useHistory()
   // console.log(contacts)
   parseEmails(contacts, 'coders')
 
@@ -46,8 +48,8 @@ const Compose = () => {
       return
     }
 
-    let emailString = emailAddresses.join(", ")
-    console.log(emailString)
+    // let emailString = emailAddresses.join(", ")
+    // console.log(emailString)
     let sendObj = {
       send: {
         title: title,
@@ -55,7 +57,9 @@ const Compose = () => {
         group: emailAddresses
       }
     }
-    dispatch(sendEmail(sendObj))
+    dispatch(sendEmail(sendObj, ()=>{
+      history.push('/sentmail')
+    }))
 }
 
   let handleSave = () =>{
@@ -79,8 +83,8 @@ const Compose = () => {
     updateGroup(e.target.value)
     updateEmailAddresses(groupsList[e.target.value])
 
-    console.log("emailAddresses:")
-    console.log(emailAddresses)
+    // console.log("emailAddresses:")
+    // console.log(emailAddresses)
   }
 
   let onEditorChange = (evt) =>{
