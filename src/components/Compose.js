@@ -12,33 +12,38 @@ const Compose = () => {
   let [editorData, updateEditorData] = useState("Hello from CKeditor!")
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
+  let [emailAddresses, updateEmailAddresses] = useState([])
   let [trigger, updateTrigger] = useState(false)
   let dispatch = useDispatch()
   let response = useSelector(state => state.response)
+  let contacts = useSelector(state => state.contacts.list)
+  console.log(contacts)
+
 
   useEffect(()=>{
     updateEditorData("")
   }, [trigger, response])
 
   let handleSend = () =>{
-      console.log(title)
-      console.log(editorData)
-      console.log(group)
-      let sendObj = {
-        send: {
-          title: title,
-          body: editorData,
-          group: group
-        }
+    if (emailAddresses.length === 0) {
+      alert("Please choose a mailing list!")
+      return
+    }
+
+    let emailString = emailAddresses.join(",")
+    // console.log(emailString)
+    let sendObj = {
+      send: {
+        title: title,
+        body: editorData,
+        group: emailString
       }
-      dispatch(sendEmail(sendObj))
-  }
+    }
+    dispatch(sendEmail(sendObj))
+}
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
-    // console.log(editorData)
-    // console.log(title)
-    // console.log(group)
     let draftObj = {
       drafts: {
         title: title,
@@ -48,7 +53,6 @@ const Compose = () => {
     }
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
-    
   }
 
   let handleTitle = (e) =>{
@@ -57,11 +61,40 @@ const Compose = () => {
 
   let handleGroup = (e) =>{
     updateGroup(e.target.value)
+    updateEmailAddresses(groupsList[e.target.value])
+
+    console.log("emailAddresses:")
+    console.log(emailAddresses)
   }
 
   let onEditorChange = (evt) =>{
     updateEditorData(evt.editor.getData())
   }
+
+  let groupsList = {}
+  for (let i of contacts) {
+    if (groupsList[i.group]) {
+      groupsList[i.group].push(i.email)
+    }
+    else {
+      groupsList[i.group] = [i.email]
+    }
+  }
+
+  console.log("groupsList:")
+  console.log(groupsList)
+
+  let myGroups;
+
+  if (Object.keys(groupsList).length === 0) {
+    myGroups = <option>Please add some Subscribers!</option>
+  }
+  else {
+    myGroups = Object.keys(groupsList).map((r, index) =>{
+    return <option key={index} value={r}>{r}</option>
+    })
+  } 
+
 
   return (
     <>
@@ -73,9 +106,8 @@ const Compose = () => {
       />
       <label>Choose an email list:</label><br></br>
       <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-        <option value="BeerList">BeerList</option>
-        <option value="Car Lovers">Car Lovers</option>
-        <option value="Home and Garden">Home and Garden</option>
+        <option value="none">Please Select a Mailing Group</option>
+        {myGroups}
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
       <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
