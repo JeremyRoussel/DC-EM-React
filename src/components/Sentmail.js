@@ -54,6 +54,11 @@ const Sentmail = () =>{
   }, [mySentMail, trigger])
 
   let handleSend = () =>{
+    if (emailAddresses.length === 0) {
+      alert("Please choose a mailing list!")
+      return
+    }
+
     let emailString = emailAddresses.join(",")
     console.log(emailString)
     let sendObj = {

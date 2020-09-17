@@ -25,20 +25,22 @@ const Compose = () => {
   }, [trigger, response])
 
   let handleSend = () =>{
-      // console.log(title)
-      // console.log(editorData)
-      // console.log(group)
-      let emailString = emailAddresses.join(",")
-      // console.log(emailString)
-      let sendObj = {
-        send: {
-          title: title,
-          body: editorData,
-          group: emailString
-        }
+    if (emailAddresses.length === 0) {
+      alert("Please choose a mailing list!")
+      return
+    }
+
+    let emailString = emailAddresses.join(",")
+    // console.log(emailString)
+    let sendObj = {
+      send: {
+        title: title,
+        body: editorData,
+        group: emailString
       }
-      dispatch(sendEmail(sendObj))
-  }
+    }
+    dispatch(sendEmail(sendObj))
+}
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
