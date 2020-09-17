@@ -7,6 +7,7 @@ import contacts from './contacts'
 import drafts from './drafts'
 import sent from './sent'
 import sendEmail from './sendEmail'
+import displayError from './error'
 
 export default combineReducers({
     auth: auth,
@@ -14,5 +15,6 @@ export default combineReducers({
     contacts: contacts,
     drafts: drafts,
     sent: sent,
-    result: sendEmail
+    result: sendEmail,
+    error: displayError
 })
