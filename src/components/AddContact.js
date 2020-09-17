@@ -5,7 +5,7 @@ import React from 'react'
 
 // Redux Form
 import {reduxForm, Field, reset} from 'redux-form' //reduxForm is our higher order component
-
+import {Row, Button} from 'react-bootstrap'
 // Connect and Compose Component
 import {connect} from 'react-redux'
 import {compose} from 'redux'
@@ -43,38 +43,40 @@ class AddContact extends React.Component {
             <>
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 <fieldset>
-                    <label htmlFor="first_Name">First Name</label>
-                    <Field type="text" name="first_Name" component="input"/>
+                    <label htmlFor="first_Name" className="w-25">First Name</label>
+                    <Field type="text" name="first_Name" className="w-75" component="input"/>
                 </fieldset>
   
                 <fieldset>
-                    <label htmlFor="last_Name">Last Name</label>
-                    <Field type="text" name="last_Name" component="input" />
+                    <label htmlFor="last_Name" className="w-25">Last Name</label>
+                    <Field type="text" name="last_Name" className="w-75" component="input" />
                 </fieldset>
 
                 <fieldset>
-                    <label htmlFor="email">Email</label>
-                    <Field type="email" name="email" component="input" />
+                    <label htmlFor="email" className="w-25">Email</label>
+                    <Field type="email" name="email" className="w-75" component="input" />
                 </fieldset>
 
                 <fieldset>
-                    <label htmlFor="phone">Phone</label>
-                    <Field type="text" name="phone" component="input" />
+                    <label htmlFor="phone" className="w-25">Phone</label>
+                    <Field type="text" name="phone" className="w-75" component="input" />
                 </fieldset>
 
                 <fieldset>
-                    <label htmlFor="group">Group</label>
-                    <Field type="text" name="group" component="input" />
+                    <label htmlFor="group" className="w-25">Group</label>
+                    <Field type="text" name="group" className="w-75" component="input" />
                 </fieldset>
 
                 <fieldset>
-                    <label htmlFor="hobbies">Hobbies</label>
-                    <Field type="text" name="hobbies" component="input" />
+                    <label htmlFor="hobbies" className="w-25">Hobbies</label>
+                    <Field type="text" name="hobbies" className="w-75" component="input" />
                 </fieldset>
 
                 <div> {this.props.errorMessage} </div>
-
-                <button type="submit" >Submit</button>
+                <Row className="d-flex justify-content-center m-3">
+                    <button type="submit" >Submit</button>
+                </Row>
+                
             </form>
             </>
         )

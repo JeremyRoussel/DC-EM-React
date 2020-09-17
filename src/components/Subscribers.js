@@ -4,7 +4,7 @@ import requireAuth from '../requireAuth'
 
 // Redux State connection
 import { useDispatch, useSelector } from 'react-redux'
-
+import {Row} from 'react-bootstrap'
 // Dispatch Import
 import {fetchContacts} from '../actions/contacts/contactDispatches'
 
@@ -56,7 +56,6 @@ const Subscribers = () => {
 
   return (
     <>
-      I am Subscribers <br />
 
       <Table responsive hover>
         <thead>
@@ -70,20 +69,15 @@ const Subscribers = () => {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <th>Demo </th>
-            <th>Row</th>
-            <th>demo@demo.com</th>
-            <th>555-555-5555</th>
-            <th>Coders</th>
-            <th>React Apps</th>
-          </tr> */}
 
           {contactEntries}
 
         </tbody>
       </Table>
-
+      <Row className="d-flex justify-content-center m-5">
+        <h3>Add a Contact</h3>  
+      </Row>
+      
       <AddContact />
     </>
   )

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import {reduxForm, Field} from 'redux-form' //reduxForm is our higher order component
-
+import {Container, Row, Col, Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 
@@ -26,48 +26,55 @@ class Signup extends React.Component {
 
         return (
 
-            <form onSubmit={handleSubmit(this.onSubmit)} className="m-5">
+            <Container>
+            <Row className="d-flex justify-content-center m-5">
+                
+                <Col className="col-10 d-flex justify-content-center">
+            <form onSubmit={handleSubmit(this.onSubmit)} className="mt-5" style={{width:100}}>
 
                 <fieldset>
-                    <label>User Name</label>
+                    <label className="w-25">User Name</label>
                     <Field
                         name="userName"
                         type="text"
                         component="input"
                         autoComplete="none"
-                    
+                        className="w-75"
                     />
                 </fieldset>
 
                 <fieldset>
-                    <label>Email</label>
+                    <label className="w-25">Email</label>
                     <Field
                         name="email"
                         type="text"
                         component="input"
                         autoComplete="none"
-                    
+                        className="w-75"
                     />
                 </fieldset>
 
                 <fieldset>
-                    <label>Password</label>
+                    <label className="w-25">Password</label>
                     <Field
                         name="password"
                         type="password"
                         component="input"
                         autoComplete="none"
-                    
+                        className="w-75"
                     />
                     
                 </fieldset>
 
                 <div>{this.props.errorMessage}</div>
 
-                <button>Sign Up</button>
+                <Button >Sign Up</Button>
 
 
             </form>
+            </Col>
+            </Row>
+            </Container>
         );
     }
 }
