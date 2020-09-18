@@ -21,6 +21,8 @@ const BaseLayout = (props) => {
     let auth = useSelector(state => state.auth.authenticated)
     let visibility = auth ? 'visible' : 'hidden'
 
+    let contentSize = !open? 'col-10 offset-1' : 'col-8 offset-3'
+
   return (
     
     <>
@@ -32,7 +34,7 @@ const BaseLayout = (props) => {
                 <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
                 <Sidebar open={open} setOpen={setOpen} id={menuId} />
             </Col>
-            <Col className="col-10 offset-1">
+            <Col className={contentSize}>
                 {props.children}
             </Col>
 
