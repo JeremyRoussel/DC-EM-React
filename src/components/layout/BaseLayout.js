@@ -28,11 +28,11 @@ const BaseLayout = (props) => {
 
         <ThemeProvider theme={theme}>
 
-            <Col style={{visibility:visibility}} className="">      
+            <Col style={{visibility:visibility}} className="col-1">      
                 <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
                 <Sidebar open={open} setOpen={setOpen} id={menuId} />
             </Col>
-            <Col className="col-10 offset-1">
+            <Col className="col-8 offset-3">
                 {props.children}
             </Col>
 

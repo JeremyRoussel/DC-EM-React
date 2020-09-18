@@ -74,7 +74,7 @@ class AddContact extends React.Component {
 
                 <div> {this.props.errorMessage} </div>
                 <Row className="d-flex justify-content-center m-3">
-                    <button type="submit" >Submit</button>
+                    <button type="submit" className="myButton" >Submit</button>
                 </Row>
                 
             </form>
