@@ -30,7 +30,7 @@ const BaseLayout = (props) => {
 
         <ThemeProvider theme={theme}>
 
-            <Col style={{visibility:visibility}} className="col-1">      
+            <Col style={{visibility:visibility}} className="">      
                 <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
                 <Sidebar open={open} setOpen={setOpen} id={menuId} />
             </Col>
