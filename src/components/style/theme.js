@@ -12,6 +12,7 @@ export const theme = {
     primaryHover: '#93c6d6',
     mobile: '900px',
     mobile2: '576px',
+    
 };
 
 

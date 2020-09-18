@@ -13,6 +13,7 @@ export const StyledMenu = styled.nav`
     top: 0 px;
     left: 0;
     transition: transform 0.3s ease-in-out;
+    font-family: "Nova Square";
     @media (max-width: ${({ theme }) => theme.mobile}) {
         width: 100%;
     }
