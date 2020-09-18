@@ -41,7 +41,7 @@ class AddContact extends React.Component {
 
         return (
             <>
-            <form onSubmit={handleSubmit(this.onSubmit)}>
+            <form className="m-5" onSubmit={handleSubmit(this.onSubmit)}>
                 <fieldset>
                     <label htmlFor="first_Name" className="w-25">First Name</label>
                     <Field type="text" name="first_Name" className="w-75" component="input"/>

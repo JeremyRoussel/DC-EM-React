@@ -10,6 +10,7 @@ const Header = () => {
 
     let auth = useSelector(state => state.auth.authenticated)
 
+    let redirect = "https://github.com/JeremyRoussel/DC-EM-React"
     let signs;
     if (!auth){
         signs = 
@@ -31,7 +32,7 @@ return (
             <Row id="BS-override">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/About">About Us</Link>
-                <Link className="nav-link" to="/Pricing">Pricing</Link>
+                <a className="nav-link" href={redirect} target="_blank">Github</a>
 
                 </Row>
             </Nav>
