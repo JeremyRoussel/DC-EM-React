@@ -16,7 +16,7 @@ class Signup extends React.Component {
         this.props.signup(formProps, ()=>{
             console.log('Sign Up Success')
 
-            this.props.history.push('/feature')
+            this.props.history.push('/Dashboard')
         })
     }
 
