@@ -4,7 +4,7 @@ import Header from './Header'
 import Burger from './Burger'
 import {Col, Row, Container} from 'react-bootstrap'
 import '../style/sidebar.css'
-import {useOnClickOutside} from './hooks'
+import {useOnClick} from './hooks'
 import {theme} from '../style/theme'
 import { ThemeProvider } from 'styled-components';
 import {useSelector} from 'react-redux'
@@ -15,7 +15,7 @@ const BaseLayout = (props) => {
     const node = useRef();
     const menuId = "main-menu";
   
-    useOnClickOutside(node, () => setOpen(false));
+    useOnClick(node, () => setOpen(false));
     
 
     let auth = useSelector(state => state.auth.authenticated)
