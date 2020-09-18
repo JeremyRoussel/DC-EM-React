@@ -6,6 +6,7 @@ import {DropdownButton, Dropdown, Button, Form} from 'react-bootstrap'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches' 
 import { useHistory } from 'react-router-dom';
+import {addSent}from '../actions/sent/sentDispatches'
 
 
 let parseEmails = (contacts, group) =>{

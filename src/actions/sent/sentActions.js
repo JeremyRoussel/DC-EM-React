@@ -2,9 +2,9 @@ import * as sentTypes from './sentTypes'
 
 class sentActions {
 
-    static getSent(sent) {
+    static getSentSuccess(sent) {
         return {
-            type: sentTypes.getSent,
+            type: sentTypes.GET_SENT_SUCCESS,
             sent: sent
         }
     }
