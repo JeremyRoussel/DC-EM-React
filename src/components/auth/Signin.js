@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import {Row, Col, Container} from 'react-bootstrap'
 import {reduxForm, Field} from 'redux-form' //reduxForm is our higher order component
 
 import {connect} from 'react-redux'
@@ -25,37 +25,45 @@ class Signin extends React.Component {
 
         return (
 
-            <form onSubmit={handleSubmit(this.onSubmit)} className="m-5">
+            <Container>
+            <Row className="d-flex justify-content-center m-5">
+                
+                <Col className="col-10 d-flex justify-content-center">
+                <form onSubmit={handleSubmit(this.onSubmit)} className="m-5">
 
-                <fieldset>
-                    <label>Email</label>
-                    <Field
-                        name="email"
-                        type="text"
-                        component="input"
-                        autoComplete="none"
-                    
-                    />
-                </fieldset>
+                    <fieldset>
+                        <label className="w-25">Email</label>
+                        <Field
+                            name="email"
+                            type="text"
+                            component="input"
+                            autoComplete="none"
+                            className="w-75"
+                        
+                        />
+                    </fieldset>
 
-                <fieldset>
-                    <label>Password</label>
-                    <Field
-                        name="password"
-                        type="password"
-                        component="input"
-                        autoComplete="none"
-                    
-                    />
-                    
-                </fieldset>
+                    <fieldset>
+                        <label className="w-25">Password</label>
+                        <Field
+                            name="password"
+                            type="password"
+                            component="input"
+                            autoComplete="none"
+                            className="w-75"
+                        />
+                        
+                    </fieldset>
 
-                <div>{this.props.errorMessage}</div>
+                    <div>{this.props.errorMessage}</div>
 
-                <button>Sign In</button>
+                    <button>Sign In</button>
 
 
-            </form>
+                </form>
+                </Col>
+            </Row>
+            </Container>
         );
     }
 }
