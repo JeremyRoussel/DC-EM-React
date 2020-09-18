@@ -150,6 +150,8 @@ const Drafts = () => {
   } 
   return (
     <>
+    <Row>
+    <Col className="col-4 m-5">
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
@@ -159,45 +161,43 @@ const Drafts = () => {
           </Col>
         </Row>
       </Tab.Container>
+    </Col>
+    <Col style={{visibility: visibility}}>
+          <div className="App m-5">
+            <input type="text" id="title" value={title} onChange={handleTitle}></input>
+            <CKEditor
+                data={editorData} 
+                onChange={onEditorChange}
+            />
 
-    <Row>
-      <Col style={{visibility: visibility}}>
-        <div className="App m-5">
-          <input type="text" id="title" value={title} onChange={handleTitle}></input>
-          <CKEditor
-              data={editorData} 
-              onChange={onEditorChange}
-          />
+            <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+              <option value="none">Please Select a Mailing Group</option>
+              {myGroups}
+            </select>
+            <Row className="justify-content-center">
+            <button type="button" className="myButton" onClick={handleSend}>Send</button>
+            <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+            <button type="button" className="myButton" onClick={handleDelete}>Delete</button>
+            </Row>
+          </div>
 
-          <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-            <option value="none">Please Select a Mailing Group</option>
-            {myGroups}
-          </select>
-          <Row className="justify-content-center">
-          <button type="button" className="myButton" onClick={handleSend}>Send</button>
-          <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
-          <button type="button" className="myButton" onClick={handleDelete}>Delete</button>
-          </Row>
-        </div>
-
-        {/* <div className="App m-5">
-        <input type="text" value={title} onChange={handleTitle}></input>
-          <CKEditor
-              data={editorData} 
-              onChange={onEditorChange}
-          />
-      <label>Choose an email list:</label><br></br>
-      <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-        <option value="none">Please Select a Mailing Group</option>
-        {myGroups}
-      </select>
-      <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
-      <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
-      <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button> */}
-        {/* </div> */}
-      </Col>
-    </Row>
-    
+          {/* <div className="App m-5">
+          <input type="text" value={title} onChange={handleTitle}></input>
+            <CKEditor
+                data={editorData} 
+                onChange={onEditorChange}
+            />
+        <label>Choose an email list:</label><br></br>
+        <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+          <option value="none">Please Select a Mailing Group</option>
+          {myGroups}
+        </select>
+        <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
+        <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
+        <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button> */}
+          {/* </div> */}
+        </Col>
+        </Row>
 
     </>
   )
