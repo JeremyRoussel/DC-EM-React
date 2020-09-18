@@ -1,0 +1,45 @@
+/* emerald green #319b54
+Dark sky blue #93c6d6
+White #fcfffc
+Mountbatten Pink #93748a
+Charleston Green #2e3532 */
+
+select {
+}
+
+#title {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#groups {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#label {
+    width: 10%;
+}
+
+.myButton {
+    background-color: #93c6d6;
+    padding: 10px 50px;
+    margin: 8px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.myButton:hover {
+    background-color: #99e6fd
+}
