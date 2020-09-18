@@ -74,7 +74,7 @@ export const signin = (formProps, callback) => {
 
             dispatch(draftsActions.getDrafts(drafts))
 
-            dispatch(sentActions.getSent(sent))
+            dispatch(sentActions.getSentSuccess(sent))
             
             localStorage.setItem('token', token)
 

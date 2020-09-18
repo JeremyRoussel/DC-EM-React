@@ -3,7 +3,7 @@ import requireAuth from '../requireAuth'
 import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
-import {getSent} from '../actions/sent/sentDispatches'
+import {addSent, getSent} from '../actions/sent/sentDispatches'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
 
@@ -11,7 +11,7 @@ const Sentmail = () =>{
 
 
   let [editorData, updateEditorData] = useState("")
-  let [sentList, updateSentList] = useState("No Sent Mail to display!")
+  let [sentList, updateSentList] = useState([])
   let [show, updateShow] = useState(false)
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
@@ -25,17 +25,20 @@ const Sentmail = () =>{
 
   useEffect(()=>{
 
-    function instantiateSentList () {
-        try {
-          let sentAction = getSent()
-          .then(dispatch(sentAction))
-        }
-        catch (err) {
-          console.log(`Error trying to fetch Sentmail: ${err}`)
-        }
-      }  
+    async function instantiateSentList() {
 
-    instantiateSentList();
+      try {
+        let sentAction = await getSent()
+        dispatch(sentAction)
+      }
+      catch (err) {
+        console.log(`Error trying to fetch Sentmail: ${err}`)
+      }
+    }  
+    if (sentList.length === 0){
+      instantiateSentList();
+    }
+    
 
     if (mySentMail.length === 0) {
       updateSentList("No Sent Mail to report!")
@@ -58,7 +61,7 @@ const Sentmail = () =>{
     }
 
     let emailString = emailAddresses.join(",")
-    console.log(emailString)
+    // console.log(emailString)
     let sendObj = {
       send: {
         title: title,
@@ -66,7 +69,15 @@ const Sentmail = () =>{
         group: emailString
       }
     }
-    dispatch(sendEmail(sendObj))
+    dispatch(sendEmail(sendObj, async () => {
+      try {
+        let sentAction = await getSent()
+        await (dispatch(sentAction))
+      }
+      catch (err) {
+        console.log(`Error trying to fetch Sentmail: ${err}`)
+      }
+    }))
     updateTrigger(!trigger)
     updateShow(false)
   }
@@ -103,7 +114,7 @@ const Sentmail = () =>{
 
   let handleShowMe = (text, id, title) =>{
     updateShow(true)
-    console.log(text)
+    // console.log(text)
     updateEditorData(text)
     updateDraftID(id)
     updateTitle(title)
