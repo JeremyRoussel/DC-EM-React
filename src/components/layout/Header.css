@@ -2,7 +2,7 @@
 
         .navbar-custom { 
             background: rgb(49,155,84);
-            background: linear-gradient(0deg, rgba(49,155,84,1) 0%, rgba(28,194,11,1) 82%, rgba(29,214,10,1) 100%);
+            background: linear-gradient(0deg, rgba(49,155,84,1) 0%, rgba(49,155,11,1) 51%, rgba(147,198,214,1) 100%);
             max-height: 130px;
             font-family: "Nova Square";
         } 
