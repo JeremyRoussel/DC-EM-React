@@ -151,7 +151,8 @@ const Drafts = () => {
   return (
     <>
     <Row>
-    <Col className="col-4 m-5">
+    <Col className="col-3 m-5">
+      <h2 className="m-5">Drafts</h2>
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
