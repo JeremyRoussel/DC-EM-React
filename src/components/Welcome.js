@@ -10,7 +10,7 @@ export default () => {
           <div className="container">
             <h1 className="masthead-heading mb-0">Mega Mail</h1>
             <h2 className="masthead-subheading mb-0">Your one stop to connect with your customers</h2>
-            <a href="#" className="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+            <a href="/signup" className="btn btn-primary btn-xl rounded-pill mt-5">Sign up</a>
           </div>
         </div>
         <div className="bg-circle-1 bg-circle"></div>
