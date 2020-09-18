@@ -13,7 +13,7 @@ return (
 
 
     <StyledMenu open={open} aria-hidden={!isHidden} {...props}>
-    <Link to="/">My Dashboard</Link><br /><br />
+        <Link to="/Dashboard">My Dashboard</Link><br /><br />
         <Link to="/compose">Compose</Link><br /><br />
         <Link to="/subscribers">Subscribers</Link><br /><br />
         <Link to="/drafts">Drafts</Link><br /><br />

@@ -6,6 +6,8 @@ import {useSelector, useDispatch} from 'react-redux'
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
 import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
+import './style/Texteditor.css'
+
 
 const Drafts = () => {
   
@@ -149,36 +151,55 @@ const Drafts = () => {
   } 
   return (
     <>
+    <Row>
+    <Col className="col-3 m-5">
+      <h2 className="m-5">Drafts</h2>
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
-            <ListGroup>
+            <ListGroup id="list-group">
               {draftList}
             </ListGroup>
           </Col>
         </Row>
       </Tab.Container>
+    </Col>
+    <Col style={{visibility: visibility}}>
+          <div className="App m-5">
+            <input type="text" id="title" value={title} onChange={handleTitle}></input>
+            <CKEditor
+                data={editorData} 
+                onChange={onEditorChange}
+            />
 
-    <Row>
-      <Col style={{visibility: visibility}}>
-        <div className="App m-5">
-        <input type="text" value={title} onChange={handleTitle}></input>
-          <CKEditor
-              data={editorData} 
-              onChange={onEditorChange}
-          />
-      <label>Choose an email list:</label><br></br>
-      <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-        <option value="none">Please Select a Mailing Group</option>
-        {myGroups}
-      </select>
-      <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
-      <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
-      <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button>
-        </div>
-      </Col>
-    </Row>
-    
+            <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+              <option value="none">Please Select a Mailing Group</option>
+              {myGroups}
+            </select>
+            <Row className="justify-content-center">
+            <button type="button" className="myButton" onClick={handleSend}>Send</button>
+            <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+            <button type="button" className="myButton" onClick={handleDelete}>Delete</button>
+            </Row>
+          </div>
+
+          {/* <div className="App m-5">
+          <input type="text" value={title} onChange={handleTitle}></input>
+            <CKEditor
+                data={editorData} 
+                onChange={onEditorChange}
+            />
+        <label>Choose an email list:</label><br></br>
+        <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+          <option value="none">Please Select a Mailing Group</option>
+          {myGroups}
+        </select>
+        <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
+        <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
+        <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button> */}
+          {/* </div> */}
+        </Col>
+        </Row>
 
     </>
   )
