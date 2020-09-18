@@ -7,6 +7,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
 
+
 const Drafts = () => {
   
   
@@ -162,6 +163,24 @@ const Drafts = () => {
     <Row>
       <Col style={{visibility: visibility}}>
         <div className="App m-5">
+          <input type="text" id="title" value={title} onChange={handleTitle}></input>
+          <CKEditor
+              data={editorData} 
+              onChange={onEditorChange}
+          />
+
+          <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+            <option value="none">Please Select a Mailing Group</option>
+            {myGroups}
+          </select>
+          <Row className="justify-content-center">
+          <button type="button" className="myButton" onClick={handleSend}>Send</button>
+          <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+          <button type="button" className="myButton" onClick={handleDelete}>Delete</button>
+          </Row>
+        </div>
+
+        {/* <div className="App m-5">
         <input type="text" value={title} onChange={handleTitle}></input>
           <CKEditor
               data={editorData} 
@@ -174,8 +193,8 @@ const Drafts = () => {
       </select>
       <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
       <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>
-      <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button>
-        </div>
+      <Button type="button" className="m-2" onClick={handleDelete}>Delete</Button> */}
+        {/* </div> */}
       </Col>
     </Row>
     

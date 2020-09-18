@@ -6,6 +6,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {addSent, getSent} from '../actions/sent/sentDispatches'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
+import './style/Texteditor.css'
+
 
 const Sentmail = () =>{
 
@@ -159,19 +161,22 @@ const Sentmail = () =>{
 
     <Row>
       <Col style={{visibility: visibility}}>
-        <div className="App m-5">
-        <input type="text" value={title} onChange={handleTitle}></input>
+      <div className="App m-5">
+          <input type="text" id="title" value={title} onChange={handleTitle}></input>
           <CKEditor
               data={editorData} 
               onChange={onEditorChange}
           />
-      <label>Choose an email list:</label><br></br>
-      <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-        <option value="none">Please Select a Mailing Group</option>
-        {myGroups}
-      </select>
-      <Button type="button" className="m-2" onClick={handleSend}>Send</Button>
-      <Button type="button" className="m-2" onClick={handleSave}>Save as Draft</Button>        </div>
+
+          <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+            <option value="none">Please Select a Mailing Group</option>
+            {myGroups}
+          </select>
+          <Row className="justify-content-center">
+          <button type="button" className="myButton" onClick={handleSend}>Send</button>
+          <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+          </Row>
+        </div>
       </Col>
     </Row>
     

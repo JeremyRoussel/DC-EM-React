@@ -126,15 +126,15 @@ const Compose = () => {
           onChange={onEditorChange}
       />
 
-          <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
-            <option value="none">Please Select a Mailing Group</option>
-            {myGroups}
-          </select>
-          <Row className="justify-content-center">
-          <button type="button" className="myButton" onClick={handleSend}>Send</button>
+      <select name="grouplist" id="groups" onChange={handleGroup} value={group}>
+        <option value="none">Please Select a Mailing Group</option>
+        {myGroups}
+      </select>
+      <Row className="justify-content-center">
+      <button type="button" className="myButton" onClick={handleSend}>Send</button>
 
-          <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
-          </Row>
+      <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+      </Row>
       <div>{response}</div>
     </div>
   </>
