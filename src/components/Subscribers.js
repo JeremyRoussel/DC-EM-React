@@ -14,6 +14,8 @@ import ContactTableEntry from './ContactTableEntry';
 
 // Input Form
 import AddContact from './AddContact'
+import './style/Texteditor.css'
+
 
 const Subscribers = () => {
 
@@ -57,7 +59,7 @@ const Subscribers = () => {
   return (
     <>
 
-      <Table responsive hover>
+      <Table responsive hover className="m-5">
         <thead>
           <tr>
             <th>First</th>

@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from 'react-redux'
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
 import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
+import './style/Texteditor.css'
 
 
 const Drafts = () => {
@@ -156,7 +157,7 @@ const Drafts = () => {
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
-            <ListGroup>
+            <ListGroup id="list-group">
               {draftList}
             </ListGroup>
           </Col>
