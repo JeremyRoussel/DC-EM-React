@@ -25,45 +25,45 @@ class Signin extends React.Component {
 
         return (
 
-            <Container>
-            <Row className="d-flex justify-content-center m-5">
+            <Container className="d-flex justify-content-center">
+                <Col className="col-6 m-5">
+            <form onSubmit={handleSubmit(this.onSubmit)} className="m-5">
+
+                <fieldset>
+                    <label className="w-25">Email</label>
+                    <Field
+                        name="email"
+                        type="text"
+                        component="input"
+                        autoComplete="none"
+                        className="w-75"
+                    
+                    />
+                </fieldset>
+
+                <fieldset>
+                    <label className="w-25">Password</label>
+                    <Field
+                        name="password"
+                        type="password"
+                        component="input"
+                        autoComplete="none"
+                        className="w-75"
+                    />
+                    
+                </fieldset>
+
+                <div>{this.props.errorMessage}</div>
+                <Row className="justify-content-center">
+                    <button className="myButton">Sign In</button>
+                </Row>
                 
-                <Col className="col-10 d-flex justify-content-center">
-                <form onSubmit={handleSubmit(this.onSubmit)} className="m-5">
-
-                    <fieldset>
-                        <label className="w-25">Email</label>
-                        <Field
-                            name="email"
-                            type="text"
-                            component="input"
-                            autoComplete="none"
-                            className="w-75"
-                        
-                        />
-                    </fieldset>
-
-                    <fieldset>
-                        <label className="w-25">Password</label>
-                        <Field
-                            name="password"
-                            type="password"
-                            component="input"
-                            autoComplete="none"
-                            className="w-75"
-                        />
-                        
-                    </fieldset>
-
-                    <div>{this.props.errorMessage}</div>
-
-                    <button>Sign In</button>
 
 
-                </form>
-                </Col>
-            </Row>
+            </form>
+            </Col>
             </Container>
+
         );
     }
 }

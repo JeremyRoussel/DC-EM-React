@@ -26,10 +26,8 @@ class Signup extends React.Component {
 
         return (
 
-            <Container>
-            <Row className="d-flex justify-content-center m-5">
-                
-                <Col className="col-10 d-flex justify-content-center">
+            <Container className="d-flex justify-content-center">
+                <Col className="col-6 m-5">
             <form onSubmit={handleSubmit(this.onSubmit)} className="mt-5" style={{width:100}}>
 
                 <fieldset>
@@ -73,7 +71,6 @@ class Signup extends React.Component {
 
             </form>
             </Col>
-            </Row>
             </Container>
         );
     }
