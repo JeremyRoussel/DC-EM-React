@@ -51,3 +51,11 @@ Charleston Green #2e3532 */
     border-radius: 8px;
     padding: 10px;
 }
+
+.overflow2 {
+    height: 30vh;
+    overflow: scroll;
+    border: 3px solid #2e3532;
+    border-radius: 8px;
+    padding: 10px;
+}
