@@ -150,9 +150,9 @@ const Sentmail = () =>{
   } 
   return (
     <>
+    <h2 className="m-5">Sent Mail</h2>
     <Row>
-    <Col className="col-3 m-5 overflow">
-      <h2 className="m-5">Sent Mail</h2>
+    <Col className="col-3 overflow">
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
