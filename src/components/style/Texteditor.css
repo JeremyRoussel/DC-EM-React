@@ -43,6 +43,11 @@ Charleston Green #2e3532 */
     background-color: #5d7c6e
 }
 
-.list-group {
-    background-color: #47524d
+.overflow {
+    width: 100vw;
+    height: 80vh;
+    overflow: scroll;
+    border: 3px solid #2e3532;
+    border-radius: 8px;
+    padding: 10px;
 }
