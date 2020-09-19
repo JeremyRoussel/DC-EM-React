@@ -6,3 +6,7 @@
 #main-menu {
     z-index: 9;
 }
+
+Col {
+    transition: transform 0.3s ease-in-out;
+}

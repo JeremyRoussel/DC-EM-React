@@ -8,6 +8,11 @@ import {useOnClick} from './hooks'
 import {theme} from '../style/theme'
 import { ThemeProvider } from 'styled-components';
 import {useSelector} from 'react-redux'
+import FocusLock from 'react-focus-lock'
+import {Affix} from 'rsuite'
+
+
+
 
 
 const BaseLayout = (props) => {
@@ -29,13 +34,16 @@ const BaseLayout = (props) => {
         <Header />
 
         <ThemeProvider theme={theme}>
-
-            <Col style={{visibility:visibility}} className="">      
+        <Affix top={0}>
+            <Col style={{visibility:visibility}} ref={node} data-spy="affix" data-offset-top="205">
+            <FocusLock disabled={!open}>
                 <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
                 <Sidebar open={open} setOpen={setOpen} id={menuId} />
+                </FocusLock>
             </Col>
-            <Col className={contentSize}>
-                {props.children}
+            </Affix>
+            <Col>
+                    {props.children}
             </Col>
 
         </ThemeProvider>
@@ -44,5 +52,7 @@ const BaseLayout = (props) => {
     
     )
 }
+
+
 
 export default BaseLayout
