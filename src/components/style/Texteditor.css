@@ -4,6 +4,9 @@ White #fcfffc
 Mountbatten Pink #93748a
 Charleston Green #2e3532 */
 
+body {
+    height: 125vh;
+}
 
 #title {
     width: 100%;
