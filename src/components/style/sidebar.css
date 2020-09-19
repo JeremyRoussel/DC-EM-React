@@ -7,6 +7,10 @@
     z-index: 9;
 }
 
-.thing {
+/* .thing {
     min-height: 100vh;
+} */
+
+Col {
+    transition: transform 0.3s ease-in-out;
 }
