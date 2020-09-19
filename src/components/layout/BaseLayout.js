@@ -26,7 +26,8 @@ const BaseLayout = (props) => {
     let auth = useSelector(state => state.auth.authenticated)
     let visibility = auth ? 'visible' : 'hidden'
 
-    let contentSize = !open? 'col-10 offset-1' : 'col-8 offset-3'
+    // let contentSize = !open? 'col-10 offset-1' : 'col-8 offset-3'
+    let contentSize = 'col-10 offset-1' 
 
   return (
     

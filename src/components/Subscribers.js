@@ -58,8 +58,8 @@ const Subscribers = () => {
 
   return (
     <>
-
-      <Table responsive hover className="m-5">
+    <div className="mt-5 overflow2">
+      <Table responsive hover className="">
         <thead>
           <tr>
             <th>First</th>
@@ -76,6 +76,7 @@ const Subscribers = () => {
 
         </tbody>
       </Table>
+      </div>
       <Row className="d-flex justify-content-center m-5">
         <h3>Add a Contact</h3>  
       </Row>

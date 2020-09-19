@@ -10,6 +10,7 @@ const About = () => {
     <>
     <Container>
     {/* <Col className="col-8 offset-2"> */}
+    <p>Designed as part of <a href="https://www.digitalcrafts.com/" target="_blank">DigitalCraft</a> Houston's June 2020 Cohort, MegaMail is proudly presented as a capstone project utlizing React, Redux, Node.js, Bootstrap, Sendgrid, ElephantSQL, and many additional technologies. Check out our code on Github! (<a href="https://github.com/JeremyRoussel/DC-EM-React" target="_blank">Front End</a> and <a href="https://github.com/JeremyRoussel/DC-EM-Server" target="_blank">Back End</a>)</p>
         <Row className="d-flex justify-content-center mt-5">
             <Card style={{ width: '25rem' }} className="m-2">
                 <Card.Img variant="top" src={jeremy} />

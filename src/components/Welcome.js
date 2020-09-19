@@ -24,13 +24,14 @@ export default () => {
           <div className="row align-items-center">
             <div className="col-lg-6 order-lg-2">
               <div className="p-5">
-                <img className="img-fluid rounded-circle" src="" alt="Image here"></img>
+                <img className="img-fluid rounded-circle" src="https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2015/09/email-laptop-computer-marketing-ss-1920.jpg" alt="Image here"></img>
               </div>
             </div>
             <div className="col-lg-6 order-lg-1">
               <div className="p-5">
-                <h2 className="display-4">For those about to mail</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                <h2 className="display-4">For those about to mail...</h2>
+                {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p> */}
+                <p className="mt-5">Make sending newsletters, updates and more a snap with MegaMail - perfect for email marketing,  or reaching friends and families with ease</p>
               </div>
             </div>
           </div>
@@ -42,13 +43,13 @@ export default () => {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="p-5">
-                <img className="img-fluid rounded-circle" src="" alt="Image here"></img>
+                <img className="img-fluid rounded-circle" src="https://st2.depositphotos.com/1032115/8301/v/450/depositphotos_83016878-stock-illustration-thin-line-flat-design-of.jpg" alt="Image here"></img>
               </div>
             </div>
             <div className="col-lg-6">
               <div className="p-5">
                 <h2 className="display-4">We salute you!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                <p className="mt-5">Create custom-styled newsletters with our easy-to-use text editor, save drafts for later, recreate and edit previously sent mail, and keep track of subscribers in multiple email groups</p>
               </div>
             </div>
           </div>
@@ -60,13 +61,13 @@ export default () => {
           <div className="row align-items-center">
             <div className="col-lg-6 order-lg-2">
               <div className="p-5">
-                <img className="img-fluid rounded-circle" src="" alt="Image here"></img>
+                <img className="img-fluid rounded-circle" src="https://images.pexels.com/photos/7112/woman-typing-writing-windows.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Image here"></img>
               </div>
             </div>
             <div className="col-lg-6 order-lg-1">
               <div className="p-5">
                 <h2 className="display-4">Mail all the things</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                <p className="mt-5">Designed with the power of Sendgrid and CKEditor, MegaMail answers your most pressing email marketing needs in an easy-to-use format</p>
               </div>
             </div>
           </div>
