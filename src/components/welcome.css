@@ -1,5 +1,6 @@
 body {
     font-family: 'Lato';
+    height: auto
 }
 
 h1,
@@ -192,6 +193,7 @@ header.masthead {
     top: -5rem;
     right: 35%;
   }
+
 }
 
 @media (min-width: 992px) {
