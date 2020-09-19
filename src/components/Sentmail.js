@@ -152,7 +152,7 @@ const Sentmail = () =>{
     <>
     <h2 className="m-5">Sent Mail</h2>
     <Row>
-    <Col className="col-3 overflow">
+    <Col className="col-3 m-5 overflow">
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
