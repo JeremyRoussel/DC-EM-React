@@ -62,6 +62,10 @@ const Drafts = () => {
       alert("Please choose a mailing list!")
       return
     }
+    if (editorData === "") {
+      alert("Nothing in email body to send!")
+      return 
+    } 
 
     // let emailString = emailAddresses.join(",")
     // console.log(emailString)
@@ -104,6 +108,9 @@ const Drafts = () => {
     console.log("deleting the CRAP out of this email...")
     console.log(draftID)
     dispatch(deleteDraft(draftID))
+    updateEditorData("")
+    document.getElementById('title').value = ""
+    updateTitle("")
     updateTrigger(!trigger)
     // updateShow(false)
 
