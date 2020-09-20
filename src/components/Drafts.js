@@ -29,17 +29,19 @@ const Drafts = () => {
   useEffect(() => {
 
     async function instantiateDrafts() {
-      if (myDrafts.length === 0){
-        try{
-          let draftsAction = await getDrafts()
-          dispatch(draftsAction)
-        } 
-        catch (error) {
-          console.log(`Couldn't fetch Drafts. Error: ${error}`)
-        }
-      }}
-
-    instantiateDrafts()
+      
+      try{
+        let draftsAction = await getDrafts()
+        dispatch(draftsAction)
+      } 
+      catch (error) {
+        console.log(`Couldn't fetch Drafts. Error: ${error}`)
+      }
+    }
+    
+    if (myDrafts.length === 0){
+      instantiateDrafts()
+    }
 
     if (myDrafts.length === 0) {
       updateDraftList("No Drafts to report!")
