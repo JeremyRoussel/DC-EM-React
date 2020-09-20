@@ -24,7 +24,7 @@ export default () => {
           <div className="row align-items-center">
             <div className="col-lg-6 order-lg-2">
               <div className="p-5">
-                <img className="img-fluid rounded-circle" src="https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2015/09/email-laptop-computer-marketing-ss-1920.jpg" alt="Image here"></img>
+                <img className="img-fluid rounded-circle" src="https://q3p9g6n2.rocketcdn.me/wp-content/ml-loads/2015/09/email-laptop-computer-marketing-ss-1920.jpg" alt="laptop"></img>
               </div>
             </div>
             <div className="col-lg-6 order-lg-1">
@@ -43,7 +43,7 @@ export default () => {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="p-5">
-                <img className="img-fluid rounded-circle" src="https://st2.depositphotos.com/1032115/8301/v/450/depositphotos_83016878-stock-illustration-thin-line-flat-design-of.jpg" alt="Image here"></img>
+                <img className="img-fluid rounded-circle" src="https://st2.depositphotos.com/1032115/8301/v/450/depositphotos_83016878-stock-illustration-thin-line-flat-design-of.jpg" alt="mail"></img>
               </div>
             </div>
             <div className="col-lg-6">
@@ -61,7 +61,7 @@ export default () => {
           <div className="row align-items-center">
             <div className="col-lg-6 order-lg-2">
               <div className="p-5">
-                <img className="img-fluid rounded-circle" src="https://images.pexels.com/photos/7112/woman-typing-writing-windows.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Image here"></img>
+                <img className="img-fluid rounded-circle" src="https://images.pexels.com/photos/7112/woman-typing-writing-windows.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="laptop"></img>
               </div>
             </div>
             <div className="col-lg-6 order-lg-1">

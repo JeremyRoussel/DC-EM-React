@@ -30,7 +30,7 @@ const Header = () => {
         <Row id="BS-override">
             <Link className="nav-link" to="/">Home</Link>
             <Link className="nav-link" to="/About">About Us</Link>
-            <a className="nav-link" href={redirect} target="_blank">Github</a>
+            <a className="nav-link" href={redirect} target="_blank" rel="noopener noreferrer">Github</a>
         </Row>
     }
     else {
@@ -38,7 +38,7 @@ const Header = () => {
         <Row id="BS-override">
             <Link className="nav-link" to="/Dashboard">Dashboard</Link>
             <Link className="nav-link" to="/About">About Us</Link>
-            <a className="nav-link" href={redirect} target="_blank">Github</a>
+            <a className="nav-link" href={redirect} target="_blank" rel="noopener noreferrer">Github</a>
         </Row>
     }
 

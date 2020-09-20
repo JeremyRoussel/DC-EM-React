@@ -5,7 +5,7 @@ import React from 'react'
 
 // Redux Form
 import {reduxForm, Field, reset} from 'redux-form' //reduxForm is our higher order component
-import {Row, Button} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 // Connect and Compose Component
 import {connect} from 'react-redux'
 import {compose} from 'redux'

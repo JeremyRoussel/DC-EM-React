@@ -25,7 +25,7 @@ let drafts = (state = init_state, action) =>{
         case draftTypes.deleteDraft:
             return [
                 ...state.filter(r =>{
-                    return (r.id != action.draftID)
+                    return (r.id !== action.draftID)
                 })
             ]
         default: 

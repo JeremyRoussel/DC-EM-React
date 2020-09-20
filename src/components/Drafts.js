@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import requireAuth from '../requireAuth'
-import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
+import {Tab, Row, Col, ListGroup} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
 import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
+import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
 import './style/Texteditor.css'
 
@@ -54,6 +55,7 @@ const Drafts = () => {
       })
       updateDraftList(newDraftList)
     }
+    // eslint-disable-next-line
   }, [myDrafts, trigger, show])
 
 
@@ -84,29 +86,48 @@ const Drafts = () => {
   }
 
   let handleSave = () =>{
-    console.log("saving this email as a draft")
+    // console.log("saving this email as a draft")
     // console.log(editorData)
     // console.log(title)
     // console.log(group)
+    
     if (title === "") {
       title = "No Subject"
     }
 
-    let draftObj = {
-      drafts: {
-        postID: draftID,
-        title: title,
-        body: editorData,
-        group: group
+    if (draftID === '') {
+      let draftObj = {
+        drafts: {
+          title: title,
+          body: editorData,
+          group: group
+        }
       }
+      
+      dispatch(addDraft(draftObj))
+      updateTrigger(!trigger)
+      return
+
+    } else {
+      let draftObj = {
+        drafts: {
+          postID: draftID,
+          title: title,
+          body: editorData,
+          group: group
+        }
+      }
+      
+      dispatch(updateDrafts(draftObj))
+      updateTrigger(!trigger)
+      return
+
     }
-    dispatch(updateDrafts(draftObj))
-    updateTrigger(!trigger)
   }
 
   let handleDelete = () =>{
-    console.log("deleting the CRAP out of this email...")
-    console.log(draftID)
+    // console.log("deleting the CRAP out of this email...")
+    // console.log(draftID)
     dispatch(deleteDraft(draftID))
     updateEditorData("")
     document.getElementById('title').value = ""

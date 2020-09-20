@@ -6,7 +6,7 @@ let sent = (state = init_state, action) =>{
     switch (action.type) {
 
         case sentTypes.GET_SENT_SUCCESS:
-            console.log(action.sent)
+            // console.log(action.sent)
             return [
                 ...action.sent
             ]

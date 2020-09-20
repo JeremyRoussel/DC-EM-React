@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react'
 import requireAuth from '../requireAuth'
 import CKEditor from 'ckeditor4-react';
 import {useDispatch, useSelector} from 'react-redux'
-import {DropdownButton, Dropdown, Button, Form, Row, Col} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches' 
 import { useHistory } from 'react-router-dom';
-import {addSent}from '../actions/sent/sentDispatches'
+// import {addSent}from '../actions/sent/sentDispatches'
 import './style/Texteditor.css'
 
 let parseEmails = (contacts, group) =>{
@@ -17,8 +17,8 @@ let parseEmails = (contacts, group) =>{
       emailList.push(i.email)
     }
   }
-  let emailString = emailList.join(',')
-  console.log(emailString)
+  // let emailString = emailList.join(',')
+  // console.log(emailString)
 }
 
 const Compose = () => {
@@ -66,7 +66,7 @@ const Compose = () => {
 }
 
   let handleSave = () =>{
-    console.log("saving this email as a draft")
+    // console.log("saving this email as a draft")
     if (title === "") {
       title = "No Subject"
     }
@@ -80,7 +80,7 @@ const Compose = () => {
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
     document.getElementById('title').value = ""
-    history.push('/dashboard')
+    history.push('/drafts')
   }
 
   let handleTitle = (e) =>{
@@ -140,7 +140,7 @@ const Compose = () => {
       <Row className="justify-content-center">
       <button type="button" className="myButton" onClick={handleSend}>Send</button>
 
-      <button type="button" className="myButton" onClick={handleSave}>Save and Go Back</button>
+      <button type="button" className="myButton" onClick={handleSave}>Save and Go to Drafts</button>
       </Row>
       <div>{response}</div>
     </div>
