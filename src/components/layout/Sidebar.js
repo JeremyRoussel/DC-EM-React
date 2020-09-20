@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import { bool } from 'prop-types';
 import { StyledMenu } from '../style/Sidebar.styled';
@@ -9,7 +9,7 @@ import { StyledMenu } from '../style/Sidebar.styled';
 const Sidebar = ({ open, setOpen, ...props }) => {
     
     const isHidden = open ? true : false;
-    const tabIndex = isHidden ? 0 : -1;
+    // const tabIndex = isHidden ? 0 : -1;
 return (
 
 

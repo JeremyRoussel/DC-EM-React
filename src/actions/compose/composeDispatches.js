@@ -1,6 +1,6 @@
 import axios from 'axios'
 import composeActions from './composeActions'
-import * as composeTypes from './composeTypes'
+// import * as composeTypes from './composeTypes'
 
 export const sendEmail = (sendObj, callback) =>{
 
@@ -18,7 +18,7 @@ export const sendEmail = (sendObj, callback) =>{
             callback()
         }
         catch (err) {
-            console.log("error sending email")
+            console.log(`error sending email: ${err}`)
             dispatch(composeActions.sentSuccess("ERROR"))
         }
 

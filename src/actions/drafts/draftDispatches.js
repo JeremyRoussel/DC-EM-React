@@ -58,13 +58,13 @@ export const deleteDraft = (draftID) =>{
         try{
 
             let token = localStorage.getItem('token')
-            console.log(token)
+            // console.log(token)
             // SOMETHING IS WRONG WITH THIS -- THIS IS WHERE IT STOPS
             let response = await axios.delete(`http://localhost:3001/drafts/${draftID}`, {headers: {'authorization': token}})
             // let updatedDrafts = response.data
+            // console.log(response.data[0].id)
             
-
-            dispatch(draftActions.deleteDraft(draftID))
+            dispatch(draftActions.deleteDraft(response.data[0].id))
         }
         catch (err) {
             console.log("error deleting draft")

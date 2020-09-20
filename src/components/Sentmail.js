@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import requireAuth from '../requireAuth'
-import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
+import {Tab, Row, Col, ListGroup} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
-import {addSent, getSent} from '../actions/sent/sentDispatches'
+import {getSent} from '../actions/sent/sentDispatches'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
 import {useHistory} from 'react-router-dom'
@@ -15,7 +15,7 @@ const Sentmail = () =>{
 
   let [editorData, updateEditorData] = useState("")
   let [sentList, updateSentList] = useState([])
-  let [show, updateShow] = useState(true)
+  // let [show, updateShow] = useState(true)
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
   let [draftID, updateDraftID] = useState("")
@@ -24,7 +24,7 @@ const Sentmail = () =>{
   let mySentMail = useSelector(state => state.sent)
   let dispatch = useDispatch()
   let history = useHistory()
-  let response = useSelector(state => state.response)
+  // let response = useSelector(state => state.response)
   let contacts = useSelector(state => state.contacts.list)
 
   useEffect(()=>{
@@ -56,6 +56,7 @@ const Sentmail = () =>{
       updateSentList(newSentList)
     }
 
+    // eslint-disable-next-line
   }, [mySentMail, trigger])
 
   let handleSend = () =>{
@@ -91,7 +92,7 @@ const Sentmail = () =>{
   }
 
   let handleSave = () =>{
-    console.log("saving this email as a draft")
+    // console.log("saving this email as a draft")
     // console.log(editorData)
     // console.log(title)
     // console.log(group)
@@ -105,7 +106,7 @@ const Sentmail = () =>{
     }
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
-    history.push('/dashboard')
+    history.push('/drafts')
   }
 
   let handleTitle = (e) =>{
@@ -122,7 +123,7 @@ const Sentmail = () =>{
   }
 
   let handleShowMe = (text, id, title) =>{
-    updateShow(true)
+    // updateShow(true)
     // console.log(text)
     updateEditorData(text)
     updateDraftID(id)
@@ -186,8 +187,8 @@ const Sentmail = () =>{
             {myGroups}
           </select>
           <Row className="justify-content-center">
-          <button type="button" className="myButton" onClick={handleSend}>Send Again</button>
-          <button type="button" className="myButton" onClick={handleSave}>Save and Go Back</button>
+          <button type="button" className="myButton" onClick={handleSend}>Send</button>
+          <button type="button" className="myButton" onClick={handleSave}>Save Copy to Drafts</button>
           </Row>
         </div>
     </Col>

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
 import Burger from './Burger'
-import {Col, Row, Container} from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
 import '../style/sidebar.css'
 import {useOnClick} from './hooks'
 import {theme} from '../style/theme'
@@ -27,7 +27,7 @@ const BaseLayout = (props) => {
     let visibility = auth ? 'visible' : 'hidden'
 
     // let contentSize = !open? 'col-10 offset-1' : 'col-8 offset-3'
-    let contentSize = 'col-10 offset-1' 
+    // let contentSize = 'col-10 offset-1' 
 
   return (
     
