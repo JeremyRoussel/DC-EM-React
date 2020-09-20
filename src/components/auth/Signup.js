@@ -63,8 +63,9 @@ class Signup extends React.Component {
                     />
                     
                 </fieldset>
-
-                <div>{this.props.errorMessage}</div>
+                <Row className="d-flex justify-content-center">
+                    <h3>{this.props.errorMessage}</h3>
+                </Row>
                 <Row className="justify-content-center">
                     <button className="myButton">Sign Up</button>
                 </Row>

@@ -63,6 +63,9 @@ const Compose = () => {
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
+    if (title === "") {
+      title = "No Subject"
+    }
     let draftObj = {
       drafts: {
         title: title,
@@ -73,6 +76,7 @@ const Compose = () => {
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
     document.getElementById('title').value = ""
+    history.push('/dashboard')
   }
 
   let handleTitle = (e) =>{
@@ -132,7 +136,7 @@ const Compose = () => {
       <Row className="justify-content-center">
       <button type="button" className="myButton" onClick={handleSend}>Send</button>
 
-      <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+      <button type="button" className="myButton" onClick={handleSave}>Save and Go Back</button>
       </Row>
       <div>{response}</div>
     </div>

@@ -82,6 +82,10 @@ const Drafts = () => {
     // console.log(editorData)
     // console.log(title)
     // console.log(group)
+    if (title === "") {
+      title = "No Subject"
+    }
+
     let draftObj = {
       drafts: {
         postID: draftID,
