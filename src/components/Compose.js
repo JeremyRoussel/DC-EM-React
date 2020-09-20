@@ -23,8 +23,8 @@ let parseEmails = (contacts, group) =>{
 
 const Compose = () => {
 
-  let [editorData, updateEditorData] = useState("Hello from CKeditor!")
-  let [title, updateTitle] = useState("No Title")
+  let [editorData, updateEditorData] = useState("Hello from MegaMail!")
+  let [title, updateTitle] = useState("")
   let [group, updateGroup] = useState('none')
   let [emailAddresses, updateEmailAddresses] = useState([])
   let [trigger, updateTrigger] = useState(false)
@@ -37,9 +37,7 @@ const Compose = () => {
 
   useEffect(()=>{
     updateEditorData("");
-    // if (contacts) && (emailAddresses ){
-
-    // }
+    updateTitle("")
   }, [trigger, response])
 
   let handleSend = () =>{
@@ -59,7 +57,7 @@ const Compose = () => {
       }
     }
     dispatch(sendEmail(sendObj, ()=>{
-      history.push('/sentmail')
+      history.push('/dashboard')
     }))
 }
 
@@ -74,6 +72,7 @@ const Compose = () => {
     }
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
+    document.getElementById('title').value = ""
   }
 
   let handleTitle = (e) =>{

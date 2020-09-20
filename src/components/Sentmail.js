@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {addSent, getSent} from '../actions/sent/sentDispatches'
 import {addDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
+import {useHistory} from 'react-router-dom'
 import './style/Texteditor.css'
 
 
@@ -22,6 +23,7 @@ const Sentmail = () =>{
   let [emailAddresses, updateEmailAddresses] = useState([])
   let mySentMail = useSelector(state => state.sent)
   let dispatch = useDispatch()
+  let history = useHistory()
   let response = useSelector(state => state.response)
   let contacts = useSelector(state => state.contacts.list)
 
@@ -62,13 +64,13 @@ const Sentmail = () =>{
       return
     }
 
-    let emailString = emailAddresses.join(",")
+    // let emailString = emailAddresses.join(",")
     // console.log(emailString)
     let sendObj = {
       send: {
         title: title,
         body: editorData,
-        group: emailString
+        group: emailAddresses
       }
     }
     dispatch(sendEmail(sendObj, async () => {
@@ -81,6 +83,7 @@ const Sentmail = () =>{
       }
     }))
     updateTrigger(!trigger)
+    history.push('/dashboard')
     // updateShow(false)
   }
 
@@ -177,7 +180,7 @@ const Sentmail = () =>{
             {myGroups}
           </select>
           <Row className="justify-content-center">
-          <button type="button" className="myButton" onClick={handleSend}>Send</button>
+          <button type="button" className="myButton" onClick={handleSend}>Send Again</button>
           <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
           </Row>
         </div>
