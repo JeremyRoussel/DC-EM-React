@@ -102,6 +102,9 @@ const Drafts = () => {
     console.log("deleting the CRAP out of this email...")
     console.log(draftID)
     dispatch(deleteDraft(draftID))
+    updateEditorData("")
+    document.getElementById('title').value = ""
+    updateTitle("")
     updateTrigger(!trigger)
     // updateShow(false)
 
