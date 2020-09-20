@@ -60,6 +60,10 @@ const Drafts = () => {
       alert("Please choose a mailing list!")
       return
     }
+    if (editorData === "") {
+      alert("Nothing in email body to send!")
+      return 
+    } 
 
     // let emailString = emailAddresses.join(",")
     // console.log(emailString)

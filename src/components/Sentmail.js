@@ -63,7 +63,10 @@ const Sentmail = () =>{
       alert("Please choose a mailing list!")
       return
     }
-
+    if (editorData === "") {
+      alert("Nothing in email body to send!")
+      return 
+    } 
     // let emailString = emailAddresses.join(",")
     // console.log(emailString)
     let sendObj = {
@@ -102,6 +105,7 @@ const Sentmail = () =>{
     }
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
+    history.push('/dashboard')
   }
 
   let handleTitle = (e) =>{
@@ -183,7 +187,7 @@ const Sentmail = () =>{
           </select>
           <Row className="justify-content-center">
           <button type="button" className="myButton" onClick={handleSend}>Send Again</button>
-          <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+          <button type="button" className="myButton" onClick={handleSave}>Save and Go Back</button>
           </Row>
         </div>
     </Col>
