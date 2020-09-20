@@ -72,7 +72,9 @@ class AddContact extends React.Component {
                     <Field type="text" name="hobbies" className="w-75" component="input" />
                 </fieldset>
 
-                <div> {this.props.errorMessage} </div>
+                <div className="d-flex justify-content-center ">
+                    <h3> {this.props.errorMessage} </h3>
+                </div>
                 <Row className="d-flex justify-content-center m-3">
                     <button type="submit" className="myButton" >Submit</button>
                 </Row>

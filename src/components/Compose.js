@@ -23,8 +23,8 @@ let parseEmails = (contacts, group) =>{
 
 const Compose = () => {
 
-  let [editorData, updateEditorData] = useState("Hello from CKeditor!")
-  let [title, updateTitle] = useState("No Title")
+  let [editorData, updateEditorData] = useState("Hello from MegaMail!")
+  let [title, updateTitle] = useState("")
   let [group, updateGroup] = useState('none')
   let [emailAddresses, updateEmailAddresses] = useState([])
   let [trigger, updateTrigger] = useState(false)
@@ -37,9 +37,7 @@ const Compose = () => {
 
   useEffect(()=>{
     updateEditorData("");
-    // if (contacts) && (emailAddresses ){
-
-    // }
+    updateTitle("")
   }, [trigger, response])
 
   let handleSend = () =>{
@@ -59,12 +57,15 @@ const Compose = () => {
       }
     }
     dispatch(sendEmail(sendObj, ()=>{
-      history.push('/sentmail')
+      history.push('/dashboard')
     }))
 }
 
   let handleSave = () =>{
     console.log("saving this email as a draft")
+    if (title === "") {
+      title = "No Subject"
+    }
     let draftObj = {
       drafts: {
         title: title,
@@ -74,6 +75,8 @@ const Compose = () => {
     }
     dispatch(addDraft(draftObj))
     updateTrigger(!trigger)
+    document.getElementById('title').value = ""
+    history.push('/dashboard')
   }
 
   let handleTitle = (e) =>{
@@ -133,7 +136,7 @@ const Compose = () => {
       <Row className="justify-content-center">
       <button type="button" className="myButton" onClick={handleSend}>Send</button>
 
-      <button type="button" className="myButton" onClick={handleSave}>Save as Draft</button>
+      <button type="button" className="myButton" onClick={handleSave}>Save and Go Back</button>
       </Row>
       <div>{response}</div>
     </div>

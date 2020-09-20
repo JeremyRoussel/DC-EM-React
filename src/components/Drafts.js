@@ -3,6 +3,7 @@ import requireAuth from '../requireAuth'
 import {Tab, Row, Col, ListGroup, Button} from 'react-bootstrap'
 import CKEditor from 'ckeditor4-react';
 import {useSelector, useDispatch} from 'react-redux'
+import { useHistory } from 'react-router-dom';
 // CHANGE THIS TO UPDATE DRAFTS, NOT ADD DRAFT
 import {getDrafts, updateDrafts, deleteDraft} from '../actions/drafts/draftDispatches'
 import {sendEmail} from '../actions/compose/composeDispatches'
@@ -18,6 +19,7 @@ const Drafts = () => {
   let [trigger, updateTrigger] = useState(false)
   let myDrafts = useSelector(state => state.drafts)
   let dispatch = useDispatch()
+  let history = useHistory()
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
   let [draftID, updateDraftID] = useState("")
@@ -59,18 +61,19 @@ const Drafts = () => {
       return
     }
 
-    let emailString = emailAddresses.join(",")
-    console.log(emailString)
+    // let emailString = emailAddresses.join(",")
+    // console.log(emailString)
     let sendObj = {
       send: {
         title: title,
         body: editorData,
-        group: emailString
+        group: emailAddresses
       }
     }
     dispatch(sendEmail(sendObj))
     dispatch(deleteDraft(draftID))
     updateTrigger(!trigger)
+    history.push('/dashboard')
     // updateShow(false)
   }
 
@@ -79,6 +82,10 @@ const Drafts = () => {
     // console.log(editorData)
     // console.log(title)
     // console.log(group)
+    if (title === "") {
+      title = "No Subject"
+    }
+
     let draftObj = {
       drafts: {
         postID: draftID,
@@ -152,7 +159,9 @@ const Drafts = () => {
   } 
   return (
     <>
-    <h2 className="m-5">Drafts</h2>
+    <Row className="d-flex justify-content-center">
+      <h2 className="m-5">Drafts</h2>
+    </Row>
     <Row>
     <Col className="col-3 m-5 overflow">
       <Tab.Container id="list-group-tabs-example">
