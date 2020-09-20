@@ -153,7 +153,9 @@ const Sentmail = () =>{
   } 
   return (
     <>
-    <h2 className="m-5">Sent Mail</h2>
+    <Row className="d-flex justify-content-center">
+      <h2 className="m-5">Sent Mail</h2>
+    </Row>
     <Row>
     <Col className="col-3 m-5 overflow">
       <Tab.Container id="list-group-tabs-example">

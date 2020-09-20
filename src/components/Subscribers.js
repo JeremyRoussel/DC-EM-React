@@ -58,7 +58,7 @@ const Subscribers = () => {
 
   return (
     <>
-    <div className="mt-5 overflow2">
+    <div className="m-5 overflow2">
       <Table responsive hover className="">
         <thead>
           <tr>
