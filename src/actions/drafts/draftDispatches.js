@@ -9,7 +9,7 @@ export const getDrafts = async () =>{
         let token = localStorage.getItem('token')
 
         let response = await axios.get("http://localhost:3001/drafts", {headers: {'authorization': token}})
-        console.log(response);
+        // console.log(response);
         let drafts = response.data;
 
         return draftActions.getDrafts(drafts)

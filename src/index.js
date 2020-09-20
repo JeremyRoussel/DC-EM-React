@@ -21,12 +21,23 @@ import Subscribers from './components/Subscribers'
 import Sentmail from './components/Sentmail'
 import BaseLayout from './components/layout/BaseLayout'
 
+import {loadState, saveState} from './reducers/localStorage'
+import {throttle} from 'lodash'
+
 import reducers from './reducers/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-let store = createStore(reducers, {auth: {authenticated: localStorage.getItem('token')}},
+const persistedState = loadState();
+
+let store = createStore(reducers, persistedState,
   compose(applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+
+store.subscribe(throttle(() => {
+  saveState(
+    store.getState()
+  );
+}, 1000));
 
 ReactDOM.render(
   <Provider store={store}>
