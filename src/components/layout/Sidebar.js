@@ -13,7 +13,7 @@ const Sidebar = ({ open, setOpen, ...props }) => {
 return (
 
 
-    <StyledMenu open={open} aria-hidden={!isHidden} {...props}>
+    <StyledMenu open={open} aria-hidden={!isHidden} {...props} className="thing">
 
     <Link to="/" onClick={() => setOpen(!open)} {...props}>My Dashboard</Link><br /><br />
         <Link to="/compose" onClick={() => setOpen(!open)} {...props}>Compose</Link><br /><br />

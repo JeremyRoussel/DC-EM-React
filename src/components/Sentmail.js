@@ -14,7 +14,7 @@ const Sentmail = () =>{
 
   let [editorData, updateEditorData] = useState("")
   let [sentList, updateSentList] = useState([])
-  let [show, updateShow] = useState(false)
+  let [show, updateShow] = useState(true)
   let [title, updateTitle] = useState("No Title")
   let [group, updateGroup] = useState('none')
   let [draftID, updateDraftID] = useState("")
@@ -81,7 +81,7 @@ const Sentmail = () =>{
       }
     }))
     updateTrigger(!trigger)
-    updateShow(false)
+    // updateShow(false)
   }
 
   let handleSave = () =>{
@@ -122,7 +122,8 @@ const Sentmail = () =>{
     updateTitle(title)
   }
 
-  let visibility = show ? "visible" : "hidden"
+  // let visibility = show ? "visible" : "hidden"
+  let visibility = "visible"
   
   let groupsList = {}
   for (let i of contacts) {
@@ -149,9 +150,9 @@ const Sentmail = () =>{
   } 
   return (
     <>
+    <h2 className="m-5">Sent Mail</h2>
     <Row>
-    <Col className="col-3 m-5">
-      <h2 className="m-5">Sent Mail</h2>
+    <Col className="col-3 m-5 overflow">
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>

@@ -1,11 +1,15 @@
 
 .sidebar {
-    height: 100vh;
-
+    min-height: 100vh;
 }
+
 #main-menu {
     z-index: 9;
 }
+
+/* .thing {
+    min-height: 100vh;
+} */
 
 Col {
     transition: transform 0.3s ease-in-out;

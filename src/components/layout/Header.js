@@ -10,7 +10,9 @@ const Header = () => {
 
     let auth = useSelector(state => state.auth.authenticated)
 
+    let redirect = "https://github.com/JeremyRoussel/DC-EM-React"
     let signs;
+
     if (!auth){
         signs = 
         <div id="BS-override">
@@ -20,8 +22,26 @@ const Header = () => {
     }
     else {
         signs = <div id="BS-override"><Link className="nav-link" to="/signout">Sign Out</Link></div>
-        
     }
+
+    // let mainlinks;
+    // if (!auth) {
+    //     mainlinks = 
+    //     <Row id="BS-override">
+    //         <Link className="nav-link" to="/">Home</Link>
+    //         <Link className="nav-link" to="/About">About Us</Link>
+    //         <a className="nav-link" href={redirect} target="_blank">Github</a>
+    //     </Row>
+    // }
+    // else {
+    //     mainlinks =
+    //     <Row id="BS-override">
+    //         <Link className="nav-link" to="/Dashboard">Dashboard</Link>
+    //         <Link className="nav-link" to="/About">About Us</Link>
+    //         <a className="nav-link" href={redirect} target="_blank">Github</a>
+    //     </Row>
+    // }
+
 return (
     <>
         
@@ -29,11 +49,11 @@ return (
             <Navbar.Brand href="/"><Image src={logo} fluid alt="logo"></Image></Navbar.Brand>
             <Nav className="mr-auto">
             <Row id="BS-override">
+                
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/About">About Us</Link>
-                <Link className="nav-link" to="/Pricing">Pricing</Link>
-
-                </Row>
+                <a className="nav-link" href={redirect} target="_blank">Github</a>
+            </Row>
             </Nav>
             <Nav>
                 {signs}

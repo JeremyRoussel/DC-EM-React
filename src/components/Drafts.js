@@ -12,9 +12,9 @@ import './style/Texteditor.css'
 const Drafts = () => {
   
   
-  let [editorData, updateEditorData] = useState("Hello from Mega Mail!")
+  let [editorData, updateEditorData] = useState("")
   let [draftList, updateDraftList] = useState("No Drafts to report!")
-  let [show, updateShow] = useState(false)
+  let [show, updateShow] = useState(true)
   let [trigger, updateTrigger] = useState(false)
   let myDrafts = useSelector(state => state.drafts)
   let dispatch = useDispatch()
@@ -71,7 +71,7 @@ const Drafts = () => {
     dispatch(sendEmail(sendObj))
     dispatch(deleteDraft(draftID))
     updateTrigger(!trigger)
-    updateShow(false)
+    // updateShow(false)
   }
 
   let handleSave = () =>{
@@ -96,7 +96,7 @@ const Drafts = () => {
     console.log(draftID)
     dispatch(deleteDraft(draftID))
     updateTrigger(!trigger)
-    updateShow(false)
+    // updateShow(false)
 
   }
 
@@ -124,7 +124,8 @@ const Drafts = () => {
     // titleInput.current = title
   }
   
-  let visibility = show ? "visible" : "hidden"
+  // let visibility = show ? "visible" : "hidden"
+  let visibility = "visible" 
 
   let groupsList = {}
   for (let i of contacts) {
@@ -151,9 +152,9 @@ const Drafts = () => {
   } 
   return (
     <>
+    <h2 className="m-5">Drafts</h2>
     <Row>
-    <Col className="col-3 m-5">
-      <h2 className="m-5">Drafts</h2>
+    <Col className="col-3 m-5 overflow">
       <Tab.Container id="list-group-tabs-example">
         <Row>
           <Col>
@@ -165,6 +166,7 @@ const Drafts = () => {
       </Tab.Container>
     </Col>
     <Col style={{visibility: visibility}}>
+    {/* <Col> */}
           <div className="App m-5">
             <input type="text" id="title" value={title} onChange={handleTitle}></input>
             <CKEditor

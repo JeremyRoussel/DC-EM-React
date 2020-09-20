@@ -4,6 +4,9 @@ White #fcfffc
 Mountbatten Pink #93748a
 Charleston Green #2e3532 */
 
+body {
+    height: 125vh;
+}
 
 #title {
     width: 100%;
@@ -40,9 +43,26 @@ Charleston Green #2e3532 */
 }
 
 .myButton:hover {
-    background-color: #47524d
+    background-color: #5d7c6e
 }
 
-.list-group {
-    background-color: #47524d
+.overflow {
+    width: 100vw;
+    height: 80vh;
+    overflow: scroll;
+    border: 3px solid #2e3532;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.overflow2 {
+    height: 30vh;
+    overflow: scroll;
+    border: 3px solid #2e3532;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #8064A2 !important;
 }
