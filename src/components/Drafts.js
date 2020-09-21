@@ -194,10 +194,10 @@ const Drafts = () => {
     </Row>
     <Row>
     <Col className="col-3 m-5 overflow">
-      <Tab.Container id="list-group-tabs-example">
+      <Tab.Container id="list-group-tabs-example" >
         <Row>
           <Col>
-            <ListGroup id="list-group">
+            <ListGroup id="list-group" >
               {draftList}
             </ListGroup>
           </Col>
