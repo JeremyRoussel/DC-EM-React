@@ -36,7 +36,7 @@ const BaseLayout = (props) => {
 
         <ThemeProvider theme={theme}>
         <Affix top={.3}>
-            <Col style={{visibility:visibility}} ref={node} data-spy="affix" data-offset-top="205">
+            <Col style={{visibility:visibility}} ref={node}>
             <FocusLock disabled={!open}>
                 <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
                 <Sidebar open={open} setOpen={setOpen} id={menuId} />
