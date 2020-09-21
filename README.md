@@ -1,6 +1,6 @@
 # MegaMail Front-End
 
-<img src="public/images/Homepage.jpg">
+<img src="public/images/HomePage.jpg">
 
 MegaMail is your personal app for sending emails and newsletters. Perfect for email marketing or reaching friends and families. Designed with the power of Sendgrid and CKEditor, MegaMail answers your most pressing email marketing needs in an easy-to-use format. Create custom-styled newsletters with our easy-to-use text editor, save drafts for later, recreate and edit previously sent mail, and keep track of subscribers in multiple email groups.
 
