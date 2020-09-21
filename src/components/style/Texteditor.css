@@ -70,10 +70,7 @@ body {
     
     border-color: #93c6d6 !important ;
 }
-.list-group-item.active{
-    background-color: #8064A2 !important;
-    border-color: #93c6d6 !important ;
-}
+
 .list-group-item.active{
     background-color: #8064A2 !important;
     border-color: #93c6d6 !important ;

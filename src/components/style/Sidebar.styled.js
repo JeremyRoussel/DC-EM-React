@@ -27,11 +27,11 @@ export const StyledMenu = styled.nav`
         text-decoration: none;
         transition: color 0.3s linear;
         @media (max-width: ${({ theme }) => theme.mobile}) {
-            font-size: 1rem;
+            font-size: 1.5rem;
             text-align: center;
         }
         @media (max-width: ${({ theme }) => theme.mobile2}) {
-            font-size: .7rem;
+            font-size: 1rem;
             text-align: center;
         }
         &:hover {

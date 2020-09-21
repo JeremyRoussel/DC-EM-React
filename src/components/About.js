@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card, Row, Container} from 'react-bootstrap'
 import woody from './images/woodyheadshot.jpg'
-import jeremy from './images/jeremy.jpg'
+import jeremy from './images/Jeremy.png'
 import chris from './images/chris.jpg'
 import dan from './images/Dan.png'
 
