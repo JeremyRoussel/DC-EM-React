@@ -15,10 +15,10 @@ const Header = () => {
 
     if (!auth){
         signs = 
-        <div id="BS-override">
+        <Row id="BS-override">
             <Link className="nav-link" to="/signup">Sign Up</Link>
             <Link className="nav-link" to="/signin">Log In</Link>
-        </div>
+        </Row>
     }
     else {
         signs = <div id="BS-override"><Link className="nav-link" to="/signout">Sign Out</Link></div>
