@@ -49,7 +49,7 @@ const Drafts = () => {
     } 
     else {
       let newDraftList = myDrafts.map((r, index) =>{
-          return <ListGroup.Item key={index} onClick={(e)=>{handleShowMe(e, r.body, r.id, r.title)}} href={`#link${index}`}>
+          return <ListGroup.Item key={index} onClick={(e)=>{handleShowMe(e, r.body, r.id, r.title)}} href={`#link${index}`} data-id2 = {r.id}>
             {r.title}
           </ListGroup.Item>
       })
@@ -134,7 +134,11 @@ const Drafts = () => {
     updateTitle("")
     updateTrigger(!trigger)
     // updateShow(false)
-
+    let listItemToToggle = document.getElementsByClassName('active');
+    listItemToToggle.forEach((eachItem) => {
+      console.log(eachItem)
+      eachItem.classList.toggle('active');
+    })
   }
 
   let handleTitle = (e) =>{
@@ -159,6 +163,11 @@ const Drafts = () => {
     // console.log(title)
     // console.log(e)
     // titleInput.current = title
+    let draftListActiveToggle = document.querySelector(`[data-id2= "${id}"]`);
+    console.log(draftListActiveToggle);
+    if(!draftListActiveToggle.classList.contains('active')) {
+      draftListActiveToggle.classList.toggle('active');
+    }
   }
   
   // let visibility = show ? "visible" : "hidden"
